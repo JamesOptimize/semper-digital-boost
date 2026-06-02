@@ -80,7 +80,10 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: heroPortrait, fetchpriority: "high" },
+    ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
     ],
@@ -151,9 +154,11 @@ function Hero() {
             <img
               src={heroPortrait}
               alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
-              width={1080}
-              height={1350}
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-elegant)]"
+              width={1200}
+              height={1500}
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
             />
             <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl sm:block">
               <div className="text-xs uppercase tracking-widest text-bronze">Dr. Thomas Scrimo</div>
