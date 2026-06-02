@@ -173,15 +173,21 @@ function Hero() {
         <div className="md:col-span-5">
           <div className="relative">
             <div className="absolute -inset-3 -z-10 rotate-2 rounded-[2rem] bg-forest/8" />
-            <img
-              src={heroPortrait}
-              alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
-              width={1200}
-              height={1500}
-              fetchPriority="high"
-              decoding="async"
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
-            />
+            <picture>
+              <source type="image/avif" srcSet={heroAvifSrcSet} sizes={heroSizes} />
+              <source type="image/webp" srcSet={heroWebpSrcSet} sizes={heroSizes} />
+              <img
+                src={heroJpg1200}
+                srcSet={heroJpgSrcSet}
+                sizes={heroSizes}
+                alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
+                width={1200}
+                height={1500}
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
+              />
+            </picture>
             <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl sm:block">
               <div className="text-xs uppercase tracking-widest text-bronze">Dr. Thomas Scrimo</div>
               <div className="mt-1 font-display text-sm font-semibold">DC · CCSP · USMC</div>
