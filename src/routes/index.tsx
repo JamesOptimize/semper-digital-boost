@@ -28,11 +28,25 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
-import heroPortrait from "@/assets/dr-scrimo-portrait.jpg";
+import heroAvif480 from "@/assets/hero/scrimo-480.avif";
+import heroAvif720 from "@/assets/hero/scrimo-720.avif";
+import heroAvif960 from "@/assets/hero/scrimo-960.avif";
+import heroAvif1200 from "@/assets/hero/scrimo-1200.avif";
+import heroWebp480 from "@/assets/hero/scrimo-480.webp";
+import heroWebp720 from "@/assets/hero/scrimo-720.webp";
+import heroWebp960 from "@/assets/hero/scrimo-960.webp";
+import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
+import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
+import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import clinicShot from "@/assets/clinic-adjustment.jpg";
 import pillarFamily from "@/assets/pillar-family.jpg";
 import pillarAthlete from "@/assets/pillar-athlete.jpg";
 import pillarVeteran from "@/assets/pillar-veteran.jpg";
+
+const heroAvifSrcSet = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
+const heroWebpSrcSet = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
+const heroJpgSrcSet = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
+const heroSizes = "(min-width: 768px) 42vw, 100vw";
 
 const faqs = [
   {
@@ -82,7 +96,15 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "/" },
-      { rel: "preload", as: "image", href: heroPortrait, fetchpriority: "high" },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroAvif720,
+        imagesrcset: heroAvifSrcSet,
+        imagesizes: heroSizes,
+        type: "image/avif",
+        fetchpriority: "high",
+      },
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
@@ -151,15 +173,21 @@ function Hero() {
         <div className="md:col-span-5">
           <div className="relative">
             <div className="absolute -inset-3 -z-10 rotate-2 rounded-[2rem] bg-forest/8" />
-            <img
-              src={heroPortrait}
-              alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
-              width={1200}
-              height={1500}
-              fetchPriority="high"
-              decoding="async"
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
-            />
+            <picture>
+              <source type="image/avif" srcSet={heroAvifSrcSet} sizes={heroSizes} />
+              <source type="image/webp" srcSet={heroWebpSrcSet} sizes={heroSizes} />
+              <img
+                src={heroJpg1200}
+                srcSet={heroJpgSrcSet}
+                sizes={heroSizes}
+                alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
+                width={1200}
+                height={1500}
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
+              />
+            </picture>
             <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl sm:block">
               <div className="text-xs uppercase tracking-widest text-bronze">Dr. Thomas Scrimo</div>
               <div className="mt-1 font-display text-sm font-semibold">DC · CCSP · USMC</div>
