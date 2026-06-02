@@ -28,11 +28,25 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
-import heroPortrait from "@/assets/dr-scrimo-portrait.jpg";
+import heroAvif480 from "@/assets/hero/scrimo-480.avif";
+import heroAvif720 from "@/assets/hero/scrimo-720.avif";
+import heroAvif960 from "@/assets/hero/scrimo-960.avif";
+import heroAvif1200 from "@/assets/hero/scrimo-1200.avif";
+import heroWebp480 from "@/assets/hero/scrimo-480.webp";
+import heroWebp720 from "@/assets/hero/scrimo-720.webp";
+import heroWebp960 from "@/assets/hero/scrimo-960.webp";
+import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
+import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
+import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import clinicShot from "@/assets/clinic-adjustment.jpg";
 import pillarFamily from "@/assets/pillar-family.jpg";
 import pillarAthlete from "@/assets/pillar-athlete.jpg";
 import pillarVeteran from "@/assets/pillar-veteran.jpg";
+
+const heroAvifSrcSet = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
+const heroWebpSrcSet = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
+const heroJpgSrcSet = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
+const heroSizes = "(min-width: 768px) 42vw, 100vw";
 
 const faqs = [
   {
