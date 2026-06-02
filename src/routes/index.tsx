@@ -96,7 +96,15 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "/" },
-      { rel: "preload", as: "image", href: heroPortrait, fetchpriority: "high" },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroAvif720,
+        imagesrcset: heroAvifSrcSet,
+        imagesizes: heroSizes,
+        type: "image/avif",
+        fetchpriority: "high",
+      },
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
