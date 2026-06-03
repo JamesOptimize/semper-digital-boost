@@ -123,6 +123,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Semper Chiropractic" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Semper Chiropractic — Veteran-Owned Chiropractor in Roswell, GA" },
+      { name: "twitter:title", content: "Semper Chiropractic — Veteran-Owned Chiropractor in Roswell, GA" },
+      { name: "description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
+      { property: "og:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
+      { name: "twitter:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5JAJQCRzbbMfRQ9fSpySEIitRfk1/social-images/social-1780496216122-IMG_0456.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/5JAJQCRzbbMfRQ9fSpySEIitRfk1/social-images/social-1780496216122-IMG_0456.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
