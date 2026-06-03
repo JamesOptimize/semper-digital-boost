@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import spineMark from "@/assets/spine-mark.png";
+import { SocialLinks } from "@/components/marketing/SocialLinks";
 
 export function SiteFooter() {
   return (
@@ -20,6 +21,12 @@ export function SiteFooter() {
             <p className="mt-6 text-xs uppercase tracking-widest text-bronze">
               🪖 Veteran owned &amp; operated
             </p>
+            <div className="mt-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-navy-foreground/50">
+                Follow Semper
+              </p>
+              <SocialLinks variant="footer" />
+            </div>
           </div>
 
           <div>
