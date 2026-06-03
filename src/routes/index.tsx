@@ -173,7 +173,7 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://www.semper-chiropractic.com/" },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: "https://www.semper-chiropractic.com/" },
       {
         rel: "preload",
         as: "image",

@@ -41,9 +41,9 @@ export const Route = createFileRoute("/blog")({
         property: "og:description",
         content: "Practical chiropractic, mobility, and recovery insights.",
       },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: "https://www.semper-chiropractic.com/blog" },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://www.semper-chiropractic.com/blog" }],
   }),
   component: Blog,
 });

@@ -16,9 +16,9 @@ export const Route = createFileRoute("/services")({
         property: "og:description",
         content: "Comprehensive chiropractic services for every stage of life.",
       },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: "https://www.semper-chiropractic.com/services" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: "https://www.semper-chiropractic.com/services" }],
   }),
   component: Services,
 });
