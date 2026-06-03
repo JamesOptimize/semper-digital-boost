@@ -8,4 +8,10 @@ export const SITE = {
   mapsEmbed:
     "https://www.google.com/maps?q=859+Mimosa+Blvd,+Roswell,+GA+30075&output=embed",
   mapsLink: "https://maps.google.com/?q=859+Mimosa+Blvd,+Roswell,+GA+30075",
+  social: {
+    instagram: "https://www.instagram.com/semperchiropractic/",
+    facebook: "https://www.facebook.com/semperchiropractic/",
+    linkedin: "https://www.linkedin.com/company/semper-chiropractic/",
+    website: "https://www.semper-chiropractic.com/",
+  },
 };

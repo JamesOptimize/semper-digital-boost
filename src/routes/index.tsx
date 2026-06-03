@@ -212,7 +212,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-cream">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-12 md:gap-8 md:pb-24 md:pt-20 lg:px-8">
         <div className="md:col-span-7 md:pr-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-bronze/40 bg-bronze/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest">
+          <span className="animate-bronze-glow inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-bronze/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest">
             🪖 Veteran Owned &amp; Operated
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight text-forest sm:text-6xl md:text-7xl">
@@ -348,7 +348,7 @@ function Pillars() {
         {pillars.map((p) => (
           <article
             key={p.title}
-            className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-shadow hover:shadow-xl"
+            className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-20px_color-mix(in_oklab,var(--brand-bronze)_55%,transparent)]"
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ResponsiveImage
