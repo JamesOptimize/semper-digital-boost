@@ -316,21 +316,21 @@ function Pillars() {
       title: "Family Chiropractic",
       tag: "Gentle · Pediatric · Prenatal",
       copy: "Whole-family care from your newborn's first weeks to your grandparents' golden years.",
-      img: pillarFamily,
+      set: pillarSets.family,
     },
     {
       icon: Trophy,
       title: "Sports Injury & Performance",
       tag: "CCSP Certified",
       copy: "Get back on the field faster with rehab built on the same standards that train Olympic athletes.",
-      img: pillarAthlete,
+      set: pillarSets.athlete,
     },
     {
       icon: ShieldCheck,
       title: "Veteran & Active Lifestyle",
       tag: "Semper Fidelis",
       copy: "Built for those who serve — and the disciplined patients who train like they do.",
-      img: pillarVeteran,
+      set: pillarSets.veteran,
     },
   ];
 
