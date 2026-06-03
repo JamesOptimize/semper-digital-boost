@@ -1,11 +1,10 @@
-import { Instagram, Facebook, Linkedin, Globe } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const links = [
   { href: SITE.social.instagram, label: "Instagram", Icon: Instagram },
-  { href: SITE.social.facebook, label: "Facebook", Icon: Facebook },
   { href: SITE.social.linkedin, label: "LinkedIn", Icon: Linkedin },
-  { href: SITE.social.website, label: "Website", Icon: Globe },
+  { href: SITE.social.facebook, label: "Facebook", Icon: Facebook },
 ] as const;
 
 interface SocialLinksProps {
