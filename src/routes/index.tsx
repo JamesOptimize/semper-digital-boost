@@ -348,7 +348,7 @@ function Pillars() {
         {pillars.map((p) => (
           <article
             key={p.title}
-            className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-shadow hover:shadow-xl"
+            className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-20px_color-mix(in_oklab,var(--brand-bronze)_55%,transparent)]"
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ResponsiveImage
