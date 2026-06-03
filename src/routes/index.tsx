@@ -40,6 +40,9 @@ import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
+import { SpineWave } from "@/components/marketing/SpineWave";
+import { AboutTimeline } from "@/components/marketing/AboutTimeline";
+import { InstagramFeed } from "@/components/marketing/InstagramFeed";
 
 // Pillar + clinic image sets
 import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
@@ -199,7 +202,9 @@ function Home() {
       <Pillars />
       <Services />
       <DoctorStory />
+      <AboutTimeline />
       <Testimonials />
+      <InstagramFeed />
       <Journey />
       <Location />
     </>
@@ -273,6 +278,7 @@ function Hero() {
           </div>
         </div>
       </div>
+      <SpineWave className="pointer-events-none absolute inset-x-0 bottom-0 h-20 w-full md:h-28" />
     </section>
   );
 }
