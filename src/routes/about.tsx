@@ -1,6 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SITE } from "@/lib/site";
-import heroPortrait from "@/assets/dr-scrimo-portrait.jpg";
+import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
+import heroAvif480 from "@/assets/hero/scrimo-480.avif";
+import heroAvif720 from "@/assets/hero/scrimo-720.avif";
+import heroAvif960 from "@/assets/hero/scrimo-960.avif";
+import heroAvif1200 from "@/assets/hero/scrimo-1200.avif";
+import heroWebp480 from "@/assets/hero/scrimo-480.webp";
+import heroWebp720 from "@/assets/hero/scrimo-720.webp";
+import heroWebp960 from "@/assets/hero/scrimo-960.webp";
+import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
+import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
+import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
+
+const portraitAvif = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
+const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
+const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,9 +30,9 @@ export const Route = createFileRoute("/about")({
         property: "og:description",
         content: "The Marine values and clinical training behind Semper Chiropractic.",
       },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://www.semper-chiropractic.com/about" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://www.semper-chiropractic.com/about" }],
   }),
   component: About,
 });
@@ -33,12 +47,16 @@ function About() {
 
       <div className="mt-12 grid gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img
-            src={heroPortrait}
+          <ResponsiveImage
+            avifSrcSet={portraitAvif}
+            webpSrcSet={portraitWebp}
+            jpgSrcSet={portraitJpg}
+            fallbackSrc={heroJpg1200}
+            sizes="(min-width: 768px) 40vw, 100vw"
             alt="Dr. Thomas Scrimo, founder of Semper Chiropractic"
             width={1080}
             height={1350}
-            className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-elegant)]"
+            imgClassName="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-elegant)]"
           />
         </div>
         <div className="md:col-span-7 space-y-6 text-lg leading-relaxed text-foreground/80">

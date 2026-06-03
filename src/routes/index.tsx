@@ -170,7 +170,7 @@ export const Route = createFileRoute("/")({
         content:
           "Family, sports, and veteran chiropractic care in Roswell. Book your new patient exam today.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://www.semper-chiropractic.com/" },
     ],
     links: [
       { rel: "canonical", href: "/" },
