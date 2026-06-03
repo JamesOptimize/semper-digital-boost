@@ -158,6 +158,100 @@ const faqLd = {
   })),
 };
 
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.semper-chiropractic.com/#dr-scrimo",
+  name: "Dr. Thomas Scrimo",
+  jobTitle: "Doctor of Chiropractic",
+  honorificSuffix: "DC, CCSP",
+  image: "https://www.semper-chiropractic.com/og-scrimo.jpg",
+  worksFor: {
+    "@type": "MedicalBusiness",
+    name: "Semper Chiropractic",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "859 Mimosa Blvd",
+      addressLocality: "Roswell",
+      addressRegion: "GA",
+      postalCode: "30075",
+      addressCountry: "US",
+    },
+    telephone: "+1-678-226-1333",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Life University",
+  },
+  memberOf: {
+    "@type": "Organization",
+    name: "United States Marine Corps",
+  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Doctor of Chiropractic (DC)",
+      credentialCategory: "degree",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Certified Chiropractic Sports Physician (CCSP)",
+      credentialCategory: "certification",
+    },
+  ],
+  knowsAbout: [
+    "Chiropractic care",
+    "Sports injury rehabilitation",
+    "Prenatal chiropractic",
+    "Pediatric chiropractic",
+    "Veteran wellness",
+  ],
+};
+
+const reviewsLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://www.semper-chiropractic.com/#business",
+  name: "Semper Chiropractic",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "4",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: [
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Marcus T." },
+      reviewBody:
+        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Allison R." },
+      reviewBody:
+        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "James K." },
+      reviewBody:
+        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Brianna M." },
+      reviewBody:
+        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -189,6 +283,8 @@ export const Route = createFileRoute("/")({
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
+      { type: "application/ld+json", children: JSON.stringify(personLd) },
+      { type: "application/ld+json", children: JSON.stringify(reviewsLd) },
     ],
   }),
   component: Home,
@@ -525,34 +621,58 @@ function Testimonials() {
   ];
 
   return (
-    <section className="bg-cream">
+    <section className="bg-cream" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             What patients say
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+          <h2
+            id="testimonials-heading"
+            className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+          >
             Real outcomes from real neighbors.
           </h2>
         </div>
 
-        <Carousel className="mt-12" opts={{ align: "start", loop: true }}>
+        <Carousel
+          className="mt-12"
+          opts={{ align: "start", loop: true }}
+          aria-label="Patient testimonials"
+        >
           <CarouselContent>
-            {quotes.map((q) => (
-              <CarouselItem key={q.name} className="md:basis-1/2 lg:basis-1/3">
+            {quotes.map((q, i) => (
+              <CarouselItem
+                key={q.name}
+                className="md:basis-1/2 lg:basis-1/3"
+                aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
+              >
                 <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
                   <div>
-                    <div className="flex">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-bronze text-bronze" />
+                    <div
+                      className="flex"
+                      role="img"
+                      aria-label="Rated 5 out of 5 stars"
+                    >
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <Star
+                          key={idx}
+                          className="h-4 w-4 fill-bronze text-bronze"
+                          aria-hidden
+                        />
                       ))}
                     </div>
-                    <blockquote className="mt-5 font-display text-xl leading-snug text-forest">
-                      “{q.quote}”
+                    <blockquote
+                      cite={`#testimonial-${i}`}
+                      className="mt-5 font-display text-xl leading-snug text-forest"
+                    >
+                      <p>“{q.quote}”</p>
                     </blockquote>
                   </div>
                   <figcaption className="mt-8 border-t border-border pt-4">
-                    <div className="font-semibold text-foreground">{q.name}</div>
+                    <div className="font-semibold text-foreground">
+                      <cite className="not-italic">{q.name}</cite>
+                    </div>
                     <div className="text-xs uppercase tracking-widest text-foreground/55">
                       {q.role}
                     </div>
@@ -562,8 +682,14 @@ function Testimonials() {
             ))}
           </CarouselContent>
           <div className="mt-8 flex justify-end gap-2">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
+            <CarouselPrevious
+              className="static translate-y-0"
+              aria-label="Previous testimonial"
+            />
+            <CarouselNext
+              className="static translate-y-0"
+              aria-label="Next testimonial"
+            />
           </div>
         </Carousel>
       </div>
