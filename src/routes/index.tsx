@@ -278,6 +278,7 @@ function Hero() {
           </div>
         </div>
       </div>
+      <SpineWave className="pointer-events-none absolute inset-x-0 bottom-0 h-20 w-full md:h-28" />
     </section>
   );
 }
