@@ -351,13 +351,13 @@ function Pillars() {
             className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-shadow hover:shadow-xl"
           >
             <div className="aspect-[4/3] overflow-hidden">
-              <img
-                src={p.img}
+              <ResponsiveImage
+                {...p.set}
+                sizes={pillarSizes}
                 alt={p.title}
-                width={1024}
-                height={1280}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width={1200}
+                height={900}
+                imgClassName="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="flex flex-1 flex-col p-7">
@@ -433,13 +433,14 @@ function DoctorStory() {
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img
-            src={clinicShot}
+          <ResponsiveImage
+            {...clinicSet}
+            sizes={clinicSizes}
             alt="Dr. Scrimo delivering chiropractic adjustment in the Roswell clinic"
-            width={1600}
-            height={1200}
-            loading="lazy"
-            className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[var(--shadow-elegant)]"
+            width={1200}
+            height={1500}
+            className="block aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-elegant)]"
+            imgClassName="h-full w-full object-cover"
           />
         </div>
         <div className="md:col-span-7 md:pl-6">
