@@ -13,7 +13,8 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const BOOK_URL = "https://semperchiro.janeapp.com/";
+import { SITE } from "@/lib/site";
+const BOOK_URL = SITE.bookUrl;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
