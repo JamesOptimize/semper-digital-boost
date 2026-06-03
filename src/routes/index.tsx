@@ -202,7 +202,9 @@ function Home() {
       <Pillars />
       <Services />
       <DoctorStory />
+      <AboutTimeline />
       <Testimonials />
+      <InstagramFeed />
       <Journey />
       <Location />
     </>
