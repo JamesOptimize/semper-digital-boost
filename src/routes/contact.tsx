@@ -18,9 +18,9 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:title", content: "Contact Semper Chiropractic" },
       { property: "og:description", content: "Reach the Semper Chiropractic team in Roswell." },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://www.semper-chiropractic.com/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://www.semper-chiropractic.com/contact" }],
   }),
   component: Contact,
 });
