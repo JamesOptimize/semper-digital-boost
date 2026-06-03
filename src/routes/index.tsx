@@ -212,7 +212,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-cream">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-12 md:gap-8 md:pb-24 md:pt-20 lg:px-8">
         <div className="md:col-span-7 md:pr-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-bronze/40 bg-bronze/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest">
+          <span className="animate-bronze-glow inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-bronze/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest">
             🪖 Veteran Owned &amp; Operated
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight text-forest sm:text-6xl md:text-7xl">
