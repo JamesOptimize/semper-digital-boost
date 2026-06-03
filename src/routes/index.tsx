@@ -621,34 +621,58 @@ function Testimonials() {
   ];
 
   return (
-    <section className="bg-cream">
+    <section className="bg-cream" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             What patients say
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+          <h2
+            id="testimonials-heading"
+            className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+          >
             Real outcomes from real neighbors.
           </h2>
         </div>
 
-        <Carousel className="mt-12" opts={{ align: "start", loop: true }}>
+        <Carousel
+          className="mt-12"
+          opts={{ align: "start", loop: true }}
+          aria-label="Patient testimonials"
+        >
           <CarouselContent>
-            {quotes.map((q) => (
-              <CarouselItem key={q.name} className="md:basis-1/2 lg:basis-1/3">
+            {quotes.map((q, i) => (
+              <CarouselItem
+                key={q.name}
+                className="md:basis-1/2 lg:basis-1/3"
+                aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
+              >
                 <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
                   <div>
-                    <div className="flex">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-bronze text-bronze" />
+                    <div
+                      className="flex"
+                      role="img"
+                      aria-label="Rated 5 out of 5 stars"
+                    >
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <Star
+                          key={idx}
+                          className="h-4 w-4 fill-bronze text-bronze"
+                          aria-hidden
+                        />
                       ))}
                     </div>
-                    <blockquote className="mt-5 font-display text-xl leading-snug text-forest">
-                      “{q.quote}”
+                    <blockquote
+                      cite={`#testimonial-${i}`}
+                      className="mt-5 font-display text-xl leading-snug text-forest"
+                    >
+                      <p>“{q.quote}”</p>
                     </blockquote>
                   </div>
                   <figcaption className="mt-8 border-t border-border pt-4">
-                    <div className="font-semibold text-foreground">{q.name}</div>
+                    <div className="font-semibold text-foreground">
+                      <cite className="not-italic">{q.name}</cite>
+                    </div>
                     <div className="text-xs uppercase tracking-widest text-foreground/55">
                       {q.role}
                     </div>
@@ -658,8 +682,14 @@ function Testimonials() {
             ))}
           </CarouselContent>
           <div className="mt-8 flex justify-end gap-2">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
+            <CarouselPrevious
+              className="static translate-y-0"
+              aria-label="Previous testimonial"
+            />
+            <CarouselNext
+              className="static translate-y-0"
+              aria-label="Next testimonial"
+            />
           </div>
         </Carousel>
       </div>
