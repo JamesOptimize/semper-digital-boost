@@ -38,15 +38,93 @@ import heroWebp960 from "@/assets/hero/scrimo-960.webp";
 import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
 import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
-import clinicShot from "@/assets/clinic-adjustment.jpg";
-import pillarFamily from "@/assets/pillar-family.jpg";
-import pillarAthlete from "@/assets/pillar-athlete.jpg";
-import pillarVeteran from "@/assets/pillar-veteran.jpg";
+import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
+import { LazyMap } from "@/components/marketing/LazyMap";
+
+// Pillar + clinic image sets
+import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
+import pillarFamilyAvif720 from "@/assets/pillar-family/pillar-family-720.avif";
+import pillarFamilyAvif960 from "@/assets/pillar-family/pillar-family-960.avif";
+import pillarFamilyAvif1200 from "@/assets/pillar-family/pillar-family-1200.avif";
+import pillarFamilyWebp480 from "@/assets/pillar-family/pillar-family-480.webp";
+import pillarFamilyWebp720 from "@/assets/pillar-family/pillar-family-720.webp";
+import pillarFamilyWebp960 from "@/assets/pillar-family/pillar-family-960.webp";
+import pillarFamilyWebp1200 from "@/assets/pillar-family/pillar-family-1200.webp";
+import pillarFamilyJpg720 from "@/assets/pillar-family/pillar-family-720.jpg";
+import pillarFamilyJpg1200 from "@/assets/pillar-family/pillar-family-1200.jpg";
+
+import pillarAthleteAvif480 from "@/assets/pillar-athlete/pillar-athlete-480.avif";
+import pillarAthleteAvif720 from "@/assets/pillar-athlete/pillar-athlete-720.avif";
+import pillarAthleteAvif960 from "@/assets/pillar-athlete/pillar-athlete-960.avif";
+import pillarAthleteAvif1200 from "@/assets/pillar-athlete/pillar-athlete-1200.avif";
+import pillarAthleteWebp480 from "@/assets/pillar-athlete/pillar-athlete-480.webp";
+import pillarAthleteWebp720 from "@/assets/pillar-athlete/pillar-athlete-720.webp";
+import pillarAthleteWebp960 from "@/assets/pillar-athlete/pillar-athlete-960.webp";
+import pillarAthleteWebp1200 from "@/assets/pillar-athlete/pillar-athlete-1200.webp";
+import pillarAthleteJpg720 from "@/assets/pillar-athlete/pillar-athlete-720.jpg";
+import pillarAthleteJpg1200 from "@/assets/pillar-athlete/pillar-athlete-1200.jpg";
+
+import pillarVeteranAvif480 from "@/assets/pillar-veteran/pillar-veteran-480.avif";
+import pillarVeteranAvif720 from "@/assets/pillar-veteran/pillar-veteran-720.avif";
+import pillarVeteranAvif960 from "@/assets/pillar-veteran/pillar-veteran-960.avif";
+import pillarVeteranAvif1200 from "@/assets/pillar-veteran/pillar-veteran-1200.avif";
+import pillarVeteranWebp480 from "@/assets/pillar-veteran/pillar-veteran-480.webp";
+import pillarVeteranWebp720 from "@/assets/pillar-veteran/pillar-veteran-720.webp";
+import pillarVeteranWebp960 from "@/assets/pillar-veteran/pillar-veteran-960.webp";
+import pillarVeteranWebp1200 from "@/assets/pillar-veteran/pillar-veteran-1200.webp";
+import pillarVeteranJpg720 from "@/assets/pillar-veteran/pillar-veteran-720.jpg";
+import pillarVeteranJpg1200 from "@/assets/pillar-veteran/pillar-veteran-1200.jpg";
+
+import clinicAvif480 from "@/assets/clinic/clinic-480.avif";
+import clinicAvif720 from "@/assets/clinic/clinic-720.avif";
+import clinicAvif960 from "@/assets/clinic/clinic-960.avif";
+import clinicAvif1200 from "@/assets/clinic/clinic-1200.avif";
+import clinicWebp480 from "@/assets/clinic/clinic-480.webp";
+import clinicWebp720 from "@/assets/clinic/clinic-720.webp";
+import clinicWebp960 from "@/assets/clinic/clinic-960.webp";
+import clinicWebp1200 from "@/assets/clinic/clinic-1200.webp";
+import clinicJpg720 from "@/assets/clinic/clinic-720.jpg";
+import clinicJpg1200 from "@/assets/clinic/clinic-1200.jpg";
 
 const heroAvifSrcSet = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
 const heroWebpSrcSet = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
 const heroJpgSrcSet = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 const heroSizes = "(min-width: 768px) 42vw, 100vw";
+
+const pillarSizes = "(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw";
+const clinicSizes = "(min-width: 768px) 40vw, 100vw";
+
+const buildSet = (a: string, b: string, c: string, d: string) =>
+  `${a} 480w, ${b} 720w, ${c} 960w, ${d} 1200w`;
+const buildJpgSet = (a: string, b: string) => `${a} 720w, ${b} 1200w`;
+
+const pillarSets = {
+  family: {
+    avifSrcSet: buildSet(pillarFamilyAvif480, pillarFamilyAvif720, pillarFamilyAvif960, pillarFamilyAvif1200),
+    webpSrcSet: buildSet(pillarFamilyWebp480, pillarFamilyWebp720, pillarFamilyWebp960, pillarFamilyWebp1200),
+    jpgSrcSet: buildJpgSet(pillarFamilyJpg720, pillarFamilyJpg1200),
+    fallbackSrc: pillarFamilyJpg1200,
+  },
+  athlete: {
+    avifSrcSet: buildSet(pillarAthleteAvif480, pillarAthleteAvif720, pillarAthleteAvif960, pillarAthleteAvif1200),
+    webpSrcSet: buildSet(pillarAthleteWebp480, pillarAthleteWebp720, pillarAthleteWebp960, pillarAthleteWebp1200),
+    jpgSrcSet: buildJpgSet(pillarAthleteJpg720, pillarAthleteJpg1200),
+    fallbackSrc: pillarAthleteJpg1200,
+  },
+  veteran: {
+    avifSrcSet: buildSet(pillarVeteranAvif480, pillarVeteranAvif720, pillarVeteranAvif960, pillarVeteranAvif1200),
+    webpSrcSet: buildSet(pillarVeteranWebp480, pillarVeteranWebp720, pillarVeteranWebp960, pillarVeteranWebp1200),
+    jpgSrcSet: buildJpgSet(pillarVeteranJpg720, pillarVeteranJpg1200),
+    fallbackSrc: pillarVeteranJpg1200,
+  },
+} as const;
+
+const clinicSet = {
+  avifSrcSet: buildSet(clinicAvif480, clinicAvif720, clinicAvif960, clinicAvif1200),
+  webpSrcSet: buildSet(clinicWebp480, clinicWebp720, clinicWebp960, clinicWebp1200),
+  jpgSrcSet: buildJpgSet(clinicJpg720, clinicJpg1200),
+  fallbackSrc: clinicJpg1200,
+};
 
 const faqs = [
   {
