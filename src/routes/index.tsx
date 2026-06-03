@@ -158,6 +158,100 @@ const faqLd = {
   })),
 };
 
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.semper-chiropractic.com/#dr-scrimo",
+  name: "Dr. Thomas Scrimo",
+  jobTitle: "Doctor of Chiropractic",
+  honorificSuffix: "DC, CCSP",
+  image: "https://www.semper-chiropractic.com/og-scrimo.jpg",
+  worksFor: {
+    "@type": "MedicalBusiness",
+    name: "Semper Chiropractic",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "859 Mimosa Blvd",
+      addressLocality: "Roswell",
+      addressRegion: "GA",
+      postalCode: "30075",
+      addressCountry: "US",
+    },
+    telephone: "+1-678-226-1333",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Life University",
+  },
+  memberOf: {
+    "@type": "Organization",
+    name: "United States Marine Corps",
+  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Doctor of Chiropractic (DC)",
+      credentialCategory: "degree",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Certified Chiropractic Sports Physician (CCSP)",
+      credentialCategory: "certification",
+    },
+  ],
+  knowsAbout: [
+    "Chiropractic care",
+    "Sports injury rehabilitation",
+    "Prenatal chiropractic",
+    "Pediatric chiropractic",
+    "Veteran wellness",
+  ],
+};
+
+const reviewsLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://www.semper-chiropractic.com/#business",
+  name: "Semper Chiropractic",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "4",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: [
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Marcus T." },
+      reviewBody:
+        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Allison R." },
+      reviewBody:
+        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "James K." },
+      reviewBody:
+        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+    },
+    {
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: "Brianna M." },
+      reviewBody:
+        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -189,6 +283,8 @@ export const Route = createFileRoute("/")({
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
+      { type: "application/ld+json", children: JSON.stringify(personLd) },
+      { type: "application/ld+json", children: JSON.stringify(reviewsLd) },
     ],
   }),
   component: Home,
