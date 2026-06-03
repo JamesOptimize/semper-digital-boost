@@ -40,6 +40,9 @@ import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
+import { SpineWave } from "@/components/marketing/SpineWave";
+import { AboutTimeline } from "@/components/marketing/AboutTimeline";
+import { InstagramFeed } from "@/components/marketing/InstagramFeed";
 
 // Pillar + clinic image sets
 import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
