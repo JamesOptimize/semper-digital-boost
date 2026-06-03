@@ -20,7 +20,9 @@ export function SpineWave({ className }: SpineWaveProps) {
       ref={ref}
       viewBox="0 0 1200 160"
       fill="none"
-      aria-hidden
+      role="presentation"
+      aria-hidden="true"
+      focusable="false"
       preserveAspectRatio="none"
       className={className}
     >
