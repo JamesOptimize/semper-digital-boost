@@ -33,6 +33,7 @@ export function AboutTimeline() {
   return (
     <section
       id="about"
+      aria-labelledby="about-timeline-heading"
       className="relative overflow-hidden bg-gradient-to-b from-cream via-cream to-background"
     >
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
