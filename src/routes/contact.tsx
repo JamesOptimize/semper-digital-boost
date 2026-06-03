@@ -5,6 +5,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE } from "@/lib/site";
+import { LazyMap } from "@/components/marketing/LazyMap";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -95,14 +96,10 @@ function Contact() {
             Sat by appointment · Sun closed
           </InfoRow>
 
-          <div className="overflow-hidden rounded-3xl ring-1 ring-border">
-            <iframe
-              title="Semper Chiropractic map"
-              src={SITE.mapsEmbed}
-              loading="lazy"
-              className="h-[260px] w-full"
-            />
-          </div>
+          <LazyMap
+            title="Semper Chiropractic map"
+            className="h-[260px] w-full overflow-hidden rounded-3xl bg-muted ring-1 ring-border"
+          />
         </aside>
 
         <form

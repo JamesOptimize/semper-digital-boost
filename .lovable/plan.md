@@ -1,92 +1,85 @@
 
-## Scope
+# 2026 Performance Pass — Semper Chiropractic
 
-Build the Semper Chiropractic marketing site in this Lovable project (TanStack Start + Tailwind v4 — not Webflow; same visual outcome, code we can keep iterating on). Foundation = chosen Direction 1 (Editorial Trust), refined with your locked brand tokens and the homepage architecture you specified.
+Goal: push the site to Lighthouse 98–100 / CWV "Good" across the board by eliminating image, third‑party, and font costs already identified in the last audit. Scope is presentation + head metadata only — no business logic, routes, or content changes.
 
-## Brand system (locked into `src/styles.css`)
+## 1. Picture sets for every content image
 
-- `--brand-forest: #0A3D2A` (primary)
-- `--brand-bronze: #D4A017` (accent, veteran)
-- `--brand-cream: #F8F5F0` (background/neutral)
-- `--brand-navy: #0C2340` (deep surfaces, footer)
-- Foreground/border/muted tokens derived from these in oklch
-- Headings: Satoshi Variable · Body: Inter (loaded via Fontshare/Google)
-- Radius, shadow, motion tokens defined once and reused
+Convert the four remaining JPEGs to the same AVIF/WebP/JPEG responsive ladder we already shipped for the hero.
 
-## Routes
+Targets:
+- `src/assets/pillar-athlete.jpg`
+- `src/assets/pillar-family.jpg`
+- `src/assets/pillar-veteran.jpg`
+- `src/assets/clinic-adjustment.jpg`
 
+For each: generate 480 / 720 / 960 / 1200 widths in `.avif`, `.webp`, `.jpg` under `src/assets/<name>/` using `sharp` (already proven on hero). Replace `<img src=…>` usages with a small `<ResponsiveImage>` helper that emits:
+
+```tsx
+<picture>
+  <source type="image/avif" srcSet={avif} sizes={sizes} />
+  <source type="image/webp" srcSet={webp} sizes={sizes} />
+  <img src={fallback} srcSet={jpg} sizes={sizes}
+       width={w} height={h} loading="lazy" decoding="async"
+       alt={alt} className={className} />
+</picture>
 ```
-src/routes/
-  __root.tsx          shell, sitewide meta, Organization + LocalBusiness JSON-LD, sticky mobile Book/Call bar
-  index.tsx           Homepage (long-scroll, sections below)
-  about.tsx           Dr. Scrimo full bio, Marine story, Life University, philosophy
-  services.tsx        Detailed service cards + FAQs
-  blog.tsx            Index of wellness posts (static MDX-style list; placeholder posts to start)
-  contact.tsx         Map, hours, NAP, contact form (validated, HIPAA-conscious)
+
+- Explicit `width`/`height` on every `<img>` → CLS stays <0.05.
+- `loading="lazy"` + `decoding="async"` on everything below the fold; hero keeps `fetchpriority="high"` + preload (already in place).
+- AVIF mobile target ≤80 KB per pillar, ≤120 KB for clinic shot.
+
+## 2. Lazy-mounted Google Map
+
+Replace the always-rendered `<iframe>` in `src/routes/contact.tsx` (and anywhere else `SITE.mapsEmbed` is used) with an IntersectionObserver-gated mount:
+
+```tsx
+function LazyMap() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setShow(true); io.disconnect(); }
+    }, { rootMargin: "200px" });
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className="aspect-[4/3] w-full rounded-2xl bg-muted">
+      {show && (
+        <iframe src={SITE.mapsEmbed} loading="lazy" title="Map to clinic"
+                className="h-full w-full rounded-2xl border-0"
+                referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+      )}
+    </div>
+  );
+}
 ```
 
-Each route gets its own `head()` with unique title / description / og:* / canonical. Hero/portrait image wired into og:image where it exists.
+Result: zero Google Maps JS/network on initial load → TBT and INP drop sharply on `/contact` and the home contact band.
 
-## Homepage sections (in order)
+## 3. Font + preconnect polish
 
-1. **Nav** — wordmark + spine/wave mark, desktop menu, mobile hamburger (shadcn Sheet), green Book Now pill always visible
-2. **Hero** — veteran pill, serif headline "Your Health is Your Wealth.", sub-copy, primary Book + secondary Call CTAs, micro NAP line, portrait of Dr. Scrimo
-3. **Trust bar** — Google rating, insurance logos (Aetna, BCBS, Cigna, UHC, Humana), "Serving Roswell" line
-4. **Why Choose Semper** — 3 editorial cards: Family Chiropractic · Sports Injury & Rehab (CCSP) · Veteran & Active Lifestyle
-5. **Services overview** — icon grid (New Patient Exam, Adjustments, Sports Injury, Prenatal/Pediatric, Wellness) → `/services`
-6. **Dr. Scrimo story** — portrait + bio block + credential stats (DC, CCSP, Life University, USMC)
-7. **Testimonials** — quote-forward editorial carousel (embla), real patient quotes
-8. **New Patient Journey** — 3-step "what to expect" + FAQ accordion (shadcn Accordion, also emitted as FAQPage JSON-LD)
-9. **Location** — embedded Google Map iframe + hours grid + final full-width CTA banner
-10. **Footer** — NAP, hours, social, fine print
+In `src/routes/__root.tsx` `head().links`:
+- Add `{ rel: "preconnect", href: "https://fonts.googleapis.com" }` (already have gstatic + fontshare).
+- Add a `preload` for the single Satoshi 700 woff2 weight used by display headings (fetch URL from Fontshare CSS, hardcode link with `as: "font"`, `type: "font/woff2"`, `crossOrigin: "anonymous"`).
+- Confirm `font-display: swap` — Fontshare/Google `?display=swap` already covers it.
 
-**Sticky mobile bottom bar** (Book + Call) rendered from `__root.tsx`, hidden ≥ md.
+## 4. Verification
 
-## Imagery
+After changes:
+1. `bun run build` and inspect emitted asset sizes for each pillar set.
+2. `browser--performance_profile` on `/` and `/contact` — confirm LCP image is the hero AVIF, no Maps requests on initial load, no CLS from pillar swaps.
+3. Spot-check `<picture>` rendering at 440px viewport (current preview) and desktop.
 
-Generated via the image tool, saved to `src/assets/`, imported as ES6:
-- Hero portrait of Dr. Scrimo (warm, editorial)
-- Clinic interior / adjustment action shot
-- Family, athlete, veteran lifestyle vignettes for pillar cards
-- Spine/wave brand mark (transparent PNG)
+## Out of scope
 
-All `<img>` get descriptive alt text and explicit width/height to avoid CLS. WebP via Vite build.
-
-## SEO + AI-search readiness
-
-- Per-route `<title>`, `<meta description>`, og:title/description/url, canonical on leaf routes only
-- JSON-LD: `LocalBusiness` + `MedicalBusiness` + `Person` (Dr. Scrimo) in `__root.tsx`; `FAQPage` on homepage; `BreadcrumbList` on sub-pages
-- Single `<h1>` per route, semantic landmark structure, one `<main>`
-- `public/robots.txt` + `public/sitemap.xml` with the five routes
-- Target phrases woven into copy and meta: "chiropractor Roswell GA", "sports injury chiropractor", "veteran chiropractor Roswell", "family chiropractic Roswell"
-
-## Conversions
-
-- Primary CTA links to Jane App booking URL (placeholder until you confirm the exact URL)
-- Secondary CTA = `tel:6782261333`
-- Sticky mobile Book/Call bar
-- Contact form validates with zod (name/email/phone/message, length + format limits), shows toast on submit; wired to a no-op handler initially — once you confirm Lovable Cloud + an email service, I'll connect real delivery
-
-## Accessibility & performance
-
-- WCAG AA contrast on all token combinations
-- Focus rings on all interactive elements; icon-only buttons get `aria-label`
-- Tap targets ≥ 44×44 on mobile
-- Lazy-load below-the-fold images, preload hero
-- Restrained motion (fade/rise on scroll via Framer Motion, hover-lift on cards) — respects `prefers-reduced-motion`
-
-## Out of scope (call out for follow-ups)
-
-- **Webflow export** — this build lives in code (TanStack Start). Same visual result, but no Webflow project file. Confirm if that's a blocker.
-- **AI chatbot** — needs Lovable Cloud + AI Gateway; will enable on a follow-up turn if you want it now
-- **Dark mode toggle** — easy to add; flagged as a v1.1 polish item to keep launch focused
-- **A/B testing hooks, GA4, Hotjar** — script slots ready; I'll wire them once you provide measurement IDs
-- **Real testimonials, real Jane App URL, real insurance logo files** — using clearly-marked placeholders until you supply assets
+- No copy, route, or schema changes.
+- No new dependencies (`sharp` runs in sandbox, not shipped).
+- Hero `<picture>` already done — leave it.
 
 ## Technical notes
 
-- `src/styles.css`: extend `:root` with the brand tokens above; map them in `@theme inline`
-- Fonts loaded via `<link>` in `__root.tsx` head with `preconnect` to fonts.gstatic
-- Reusable section components under `src/components/marketing/` (Hero, TrustBar, PillarCards, Services, AboutBlock, Testimonials, Journey, LocationCta, StickyMobileBar, SiteHeader, SiteFooter)
-- Embla for the testimonial carousel (already in shadcn)
-- All page metadata via TanStack `head()` — title lives inside `meta` array
+- Build script: a single `/tmp/encode.mjs` using `sharp` loops the four sources × 4 widths × 3 formats (≈48 files). AVIF `quality: 50`, WebP `quality: 78`, JPEG `quality: 82, mozjpeg: true`.
+- Asset paths stay in `src/assets/<name>/<name>-<w>.<ext>` so Vite fingerprints them.
+- The `<ResponsiveImage>` helper lives in `src/components/marketing/ResponsiveImage.tsx` and accepts pre-built srcset strings (kept dumb — no runtime image logic).
