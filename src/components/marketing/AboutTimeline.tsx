@@ -69,7 +69,10 @@ export function AboutTimeline() {
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
                 The Scrimo Journey
               </p>
-              <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+              <h2
+                id="about-timeline-heading"
+                className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+              >
                 From the Corps to the clinic.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-foreground/75">
@@ -77,13 +80,20 @@ export function AboutTimeline() {
               </p>
             </ScrollReveal>
 
-            <ol className="relative mt-12 space-y-10 border-l-2 border-bronze/30 pl-8 md:pl-10">
+            <ol
+              aria-label="Dr. Scrimo's professional timeline"
+              className="relative mt-12 space-y-10 border-l-2 border-bronze/30 pl-8 md:pl-10"
+            >
               {timeline.map((item, i) => (
                 <ScrollReveal as="li" key={item.year} delay={i * 0.08} y={28}>
-                  <span className="absolute -left-[13px] flex h-6 w-6 items-center justify-center rounded-full border-2 border-bronze bg-cream text-bronze shadow-[0_0_0_4px_color-mix(in_oklab,var(--brand-bronze)_18%,transparent)]">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[13px] flex h-6 w-6 items-center justify-center rounded-full border-2 border-bronze bg-cream text-bronze shadow-[0_0_0_4px_color-mix(in_oklab,var(--brand-bronze)_18%,transparent)]"
+                  >
                     <item.Icon className="h-3 w-3" aria-hidden />
                   </span>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-bronze">
+                    <span className="sr-only">Phase: </span>
                     {item.year}
                   </p>
                   <h3 className="mt-2 font-display text-2xl font-bold text-forest">
