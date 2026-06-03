@@ -671,15 +671,10 @@ function Location() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl ring-1 ring-border">
-            <iframe
-              title="Semper Chiropractic location map"
-              src={SITE.mapsEmbed}
-              loading="lazy"
-              className="h-[380px] w-full"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <LazyMap
+            title="Semper Chiropractic location map"
+            className="h-[380px] w-full overflow-hidden rounded-3xl bg-muted ring-1 ring-border"
+          />
         </div>
 
         {/* Final CTA banner */}
