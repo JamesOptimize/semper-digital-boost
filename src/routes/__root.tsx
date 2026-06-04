@@ -128,8 +128,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
       { property: "og:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
       { name: "twitter:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/92de739d-0fc1-4bb0-9e7b-bf0a3a82a721/id-preview-4591361f--dabf9bd0-044c-4c5a-baaf-aa8bf0036aba.lovable.app-1780372459745.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/92de739d-0fc1-4bb0-9e7b-bf0a3a82a721/id-preview-4591361f--dabf9bd0-044c-4c5a-baaf-aa8bf0036aba.lovable.app-1780372459745.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
