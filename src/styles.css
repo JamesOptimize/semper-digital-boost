@@ -115,7 +115,15 @@
   --sidebar-border: oklch(0.88 0.015 85);
   --sidebar-ring: var(--brand-forest);
 
-  --shadow-elegant: 0 20px 50px -20px color-mix(in oklab, var(--brand-forest) 25%, transparent);
+  --shadow-elegant: 0 18px 40px -22px color-mix(in oklab, var(--brand-bronze) 55%, transparent);
+
+  /* Strict spacing scale (8 / 16 / 24 / 32 / 40 / 48) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
 }
 
 .dark {
@@ -139,44 +147,30 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    line-height: 1.1;
   }
-}
-
-@keyframes bronze-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--brand-bronze) 45%, transparent);
-  }
-  50% {
-    box-shadow: 0 0 22px 4px color-mix(in oklab, var(--brand-bronze) 40%, transparent);
-  }
-}
-
-@utility animate-bronze-glow {
-  animation: bronze-glow 2.8s ease-in-out infinite;
 }
 
 @utility hover-lift {
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  will-change: transform;
 }
 @utility hover-lift-on {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px -20px color-mix(in oklab, var(--brand-bronze) 55%, transparent);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-elegant);
 }
 
 @media (prefers-reduced-motion: reduce) {

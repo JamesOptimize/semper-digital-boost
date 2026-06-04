@@ -42,9 +42,9 @@ import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
-import { SpineWave } from "@/components/marketing/SpineWave";
 import { AboutTimeline } from "@/components/marketing/AboutTimeline";
 import { InstagramFeed } from "@/components/marketing/InstagramFeed";
+import { PillarCard, FamilyIcon, SportsIcon, VeteranIcon } from "@/components/marketing/PillarCard";
 
 // Pillar + clinic image sets
 import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
@@ -313,18 +313,17 @@ function Home() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-cream">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-12 md:gap-8 md:pb-24 md:pt-20 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-12 md:gap-10 md:pb-28 md:pt-24 lg:px-8">
         <div className="md:col-span-7 md:pr-6">
-          <span className="animate-bronze-glow inline-flex items-center gap-2 rounded-full border border-bronze/50 bg-bronze/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest">
-            🪖 Veteran Owned &amp; Operated
+          <span className="inline-flex items-center rounded-full border border-bronze px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-bronze">
+            Veteran Owned &amp; Operated
           </span>
-          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight text-forest sm:text-6xl md:text-7xl">
-            Your Health is{" "}
-            <span className="italic text-bronze">Your Wealth.</span>
+          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.1] tracking-[-0.02em] text-forest sm:text-6xl md:text-7xl">
+            Your Health is Your Wealth.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
             Precision chiropractic care for Roswell families, athletes, and those who serve.
-            Marine discipline. Clinical excellence.
+            Marine discipline meets clinical excellence.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -332,22 +331,20 @@ function Hero() {
               href={SITE.bookUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-forest px-7 text-base font-semibold text-forest-foreground shadow-[var(--shadow-elegant)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex h-14 items-center justify-center rounded-full bg-forest px-7 text-base font-semibold text-forest-foreground shadow-[var(--shadow-elegant)] transition-transform duration-200 ease-out will-change-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             >
-              <CalendarCheck className="h-5 w-5" />
               Book New Patient Exam
             </a>
             <a
               href={`tel:${SITE.phoneRaw}`}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border-2 border-forest px-7 text-base font-semibold text-forest hover:bg-forest hover:text-forest-foreground"
+              className="inline-flex h-14 items-center justify-center rounded-full border-2 border-forest px-7 text-base font-semibold text-forest transition-all duration-200 ease-out will-change-transform hover:scale-[1.02] hover:bg-forest hover:text-forest-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             >
-              <Phone className="h-5 w-5" />
               Call {SITE.phone}
             </a>
           </div>
 
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.25em] text-foreground/60">
-            Est. Roswell, GA • 859 Mimosa Blvd
+            Est. Roswell, GA · 859 Mimosa Blvd
           </p>
         </div>
 
@@ -376,7 +373,6 @@ function Hero() {
           </div>
         </div>
       </div>
-      <SpineWave className="pointer-events-none absolute inset-x-0 bottom-0 h-20 w-full md:h-28" />
     </section>
   );
 }
@@ -416,25 +412,22 @@ function TrustBar() {
 function Pillars() {
   const pillars = [
     {
-      icon: HeartPulse,
       title: "Family Chiropractic",
-      tag: "Gentle · Pediatric · Prenatal",
-      copy: "Whole-family care from your newborn's first weeks to your grandparents' golden years.",
-      set: pillarSets.family,
+      copy: "Whole-family care from newborns to grandparents — gentle, pediatric, and prenatal.",
+      href: "/services#family",
+      icon: FamilyIcon,
     },
     {
-      icon: Trophy,
       title: "Sports Injury & Performance",
-      tag: "CCSP Certified",
-      copy: "Get back on the field faster with rehab built on the same standards that train Olympic athletes.",
-      set: pillarSets.athlete,
+      copy: "CCSP-certified rehabilitation to return athletes to peak performance faster.",
+      href: "/services#sports",
+      icon: SportsIcon,
     },
     {
-      icon: ShieldCheck,
       title: "Veteran & Active Lifestyle",
-      tag: "Semper Fidelis",
-      copy: "Built for those who serve — and the disciplined patients who train like they do.",
-      set: pillarSets.veteran,
+      copy: "Disciplined care rooted in Semper Fidelis for those who serve and train.",
+      href: "/services#veteran",
+      icon: VeteranIcon,
     },
   ];
 
@@ -444,41 +437,13 @@ function Pillars() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
           Why Choose Semper
         </p>
-        <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-bold tracking-[-0.02em] text-forest md:text-5xl">
           Three patients. One standard of care.
         </h2>
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {pillars.map((p) => (
-          <article
-            key={p.title}
-            className="group flex flex-col overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-20px_color-mix(in_oklab,var(--brand-bronze)_55%,transparent)]"
-          >
-            <div className="aspect-[4/3] overflow-hidden">
-              <ResponsiveImage
-                {...p.set}
-                sizes={pillarSizes}
-                alt={p.title}
-                width={1200}
-                height={900}
-                imgClassName="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex flex-1 flex-col p-7">
-              <p.icon className="h-7 w-7 text-bronze" />
-              <h3 className="mt-4 font-display text-xl font-bold text-forest">{p.title}</h3>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-foreground/55">
-                {p.tag}
-              </p>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/75">{p.copy}</p>
-              <Link
-                to="/services"
-                className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-forest hover:text-bronze"
-              >
-                Learn more <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </article>
+          <PillarCard key={p.title} {...p} />
         ))}
       </div>
     </section>
