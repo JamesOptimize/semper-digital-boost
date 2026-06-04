@@ -1,3 +1,4 @@
+import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Star,
@@ -26,6 +27,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
 import heroAvif480 from "@/assets/hero/scrimo-480.avif";
@@ -620,6 +622,31 @@ function Testimonials() {
     },
   ];
 
+  const [api, setApi] = React.useState<CarouselApi | null>(null);
+  const [selected, setSelected] = React.useState(0);
+  const slideRefs = React.useRef<Array<HTMLDivElement | null>>([]);
+  const liveRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setSelected(api.selectedScrollSnap());
+    onSelect();
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api]);
+
+  // Keep keyboard focus on the active slide when navigating via arrow keys
+  const focusFromKeyboardRef = React.useRef(false);
+  React.useEffect(() => {
+    if (!focusFromKeyboardRef.current) return;
+    focusFromKeyboardRef.current = false;
+    slideRefs.current[selected]?.focus();
+  }, [selected]);
+
   return (
     <section className="bg-cream" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
@@ -638,57 +665,92 @@ function Testimonials() {
         <Carousel
           className="mt-12"
           opts={{ align: "start", loop: true }}
+          setApi={setApi}
           aria-label="Patient testimonials"
+          aria-roledescription="carousel"
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+              focusFromKeyboardRef.current = true;
+            }
+          }}
         >
-          <CarouselContent>
-            {quotes.map((q, i) => (
-              <CarouselItem
-                key={q.name}
-                className="md:basis-1/2 lg:basis-1/3"
-                aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
-              >
-                <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
-                  <div>
-                    <div
-                      className="flex"
-                      role="img"
-                      aria-label="Rated 5 out of 5 stars"
-                    >
-                      {Array.from({ length: 5 }).map((_, idx) => (
-                        <Star
-                          key={idx}
-                          className="h-4 w-4 fill-bronze text-bronze"
-                          aria-hidden
-                        />
-                      ))}
-                    </div>
-                    <blockquote
-                      cite={`#testimonial-${i}`}
-                      className="mt-5 font-display text-xl leading-snug text-forest"
-                    >
-                      <p>“{q.quote}”</p>
-                    </blockquote>
+          <CarouselContent aria-live="polite" aria-atomic="false">
+            {quotes.map((q, i) => {
+              const isActive = i === selected;
+              return (
+                <CarouselItem
+                  key={q.name}
+                  className="md:basis-1/2 lg:basis-1/3"
+                >
+                  <div
+                    ref={(el) => {
+                      slideRefs.current[i] = el;
+                    }}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
+                    aria-current={isActive ? "true" : undefined}
+                    tabIndex={isActive ? 0 : -1}
+                    className="h-full rounded-3xl outline-none ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze"
+                  >
+                    <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
+                      <div>
+                        <div
+                          className="flex"
+                          role="img"
+                          aria-label="Rated 5 out of 5 stars"
+                        >
+                          {Array.from({ length: 5 }).map((_, idx) => (
+                            <Star
+                              key={idx}
+                              className="h-4 w-4 fill-bronze text-bronze"
+                              aria-hidden
+                            />
+                          ))}
+                        </div>
+                        <blockquote
+                          cite={`#testimonial-${i}`}
+                          className="mt-5 font-display text-xl leading-snug text-forest"
+                        >
+                          <p>“{q.quote}”</p>
+                        </blockquote>
+                      </div>
+                      <figcaption className="mt-8 border-t border-border pt-4">
+                        <div className="font-semibold text-foreground">
+                          <cite className="not-italic">{q.name}</cite>
+                        </div>
+                        <div className="text-xs uppercase tracking-widest text-foreground/55">
+                          {q.role}
+                        </div>
+                      </figcaption>
+                    </figure>
                   </div>
-                  <figcaption className="mt-8 border-t border-border pt-4">
-                    <div className="font-semibold text-foreground">
-                      <cite className="not-italic">{q.name}</cite>
-                    </div>
-                    <div className="text-xs uppercase tracking-widest text-foreground/55">
-                      {q.role}
-                    </div>
-                  </figcaption>
-                </figure>
-              </CarouselItem>
-            ))}
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
-          <div className="mt-8 flex justify-end gap-2">
+          <div
+            ref={liveRef}
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {`Showing testimonial ${selected + 1} of ${quotes.length}`}
+          </div>
+          <div
+            className="mt-8 flex justify-end gap-2"
+            role="group"
+            aria-label="Testimonial carousel controls"
+          >
             <CarouselPrevious
-              className="static translate-y-0"
+              className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
               aria-label="Previous testimonial"
+              aria-controls="testimonials-heading"
             />
             <CarouselNext
-              className="static translate-y-0"
+              className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
               aria-label="Next testimonial"
+              aria-controls="testimonials-heading"
             />
           </div>
         </Carousel>
