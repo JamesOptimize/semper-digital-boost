@@ -79,7 +79,7 @@ const localBusinessLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "MedicalBusiness", "Physician"],
   name: "Semper Chiropractic",
-  image: "/og-cover.jpg",
+  image: "https://www.semper-chiropractic.com/og-cover.jpg",
   telephone: "+1-678-226-1333",
   priceRange: "$$",
   address: {
