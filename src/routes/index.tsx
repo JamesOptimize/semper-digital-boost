@@ -270,6 +270,12 @@ export const Route = createFileRoute("/")({
           "Family, sports, and veteran chiropractic care in Roswell. Book your new patient exam today.",
       },
       { property: "og:url", content: "https://www.semper-chiropractic.com/" },
+      { property: "og:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Dr. Thomas Scrimo, DC · CCSP · USMC Veteran — Semper Chiropractic, Roswell, GA" },
+      { name: "twitter:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
+      { name: "twitter:image:alt", content: "Dr. Thomas Scrimo of Semper Chiropractic in Roswell, GA" },
     ],
     links: [
       { rel: "canonical", href: "https://www.semper-chiropractic.com/" },
