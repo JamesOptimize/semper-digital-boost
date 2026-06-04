@@ -1,6 +1,20 @@
-import marinePortrait from "@/assets/about/marine-portrait.jpg";
 import { ScrollReveal } from "./ScrollReveal";
+import { ResponsiveImage } from "./ResponsiveImage";
 import { Flag, GraduationCap, Award, Stethoscope } from "lucide-react";
+import heroAvif480 from "@/assets/hero/scrimo-480.avif";
+import heroAvif720 from "@/assets/hero/scrimo-720.avif";
+import heroAvif960 from "@/assets/hero/scrimo-960.avif";
+import heroAvif1200 from "@/assets/hero/scrimo-1200.avif";
+import heroWebp480 from "@/assets/hero/scrimo-480.webp";
+import heroWebp720 from "@/assets/hero/scrimo-720.webp";
+import heroWebp960 from "@/assets/hero/scrimo-960.webp";
+import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
+import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
+import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
+
+const portraitAvif = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
+const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
+const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 
 const timeline = [
   {
@@ -38,19 +52,21 @@ export function AboutTimeline() {
     >
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="grid items-start gap-14 md:grid-cols-12 md:gap-12">
-          {/* Marine photo column */}
+          {/* Portrait column */}
           <ScrollReveal className="md:col-span-5 md:sticky md:top-24">
             <div className="relative">
               <div className="absolute -inset-2 -z-10 rotate-[-2deg] rounded-[2rem] bg-bronze/20" />
               <div className="absolute -inset-1 -z-10 rotate-[1deg] rounded-[2rem] bg-forest/15" />
-              <img
-                src={marinePortrait}
-                alt="Dr. Thomas Scrimo as a United States Marine"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                decoding="async"
-                className="aspect-square w-full rounded-[2rem] object-cover shadow-[var(--shadow-elegant)] ring-1 ring-bronze/30"
+              <ResponsiveImage
+                avifSrcSet={portraitAvif}
+                webpSrcSet={portraitWebp}
+                jpgSrcSet={portraitJpg}
+                fallbackSrc={heroJpg1200}
+                sizes="(min-width: 768px) 40vw, 100vw"
+                alt="Dr. Thomas Scrimo, USMC veteran and founder of Semper Chiropractic in Roswell, GA"
+                width={1200}
+                height={1500}
+                imgClassName="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)] ring-1 ring-bronze/30"
               />
               <div className="absolute -bottom-5 left-5 rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl">
                 <div className="text-[10px] uppercase tracking-[0.25em] text-bronze">
