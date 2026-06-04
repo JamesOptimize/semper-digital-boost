@@ -738,21 +738,72 @@ function Testimonials() {
             {`Showing testimonial ${selected + 1} of ${quotes.length}`}
           </div>
           <div
-            className="mt-8 flex justify-end gap-2"
-            role="group"
-            aria-label="Testimonial carousel controls"
+            className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
           >
-            <CarouselPrevious
-              className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-              aria-label="Previous testimonial"
-              aria-controls="testimonials-heading"
-            />
-            <CarouselNext
-              className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-              aria-label="Next testimonial"
-              aria-controls="testimonials-heading"
-            />
+            <div
+              role="tablist"
+              aria-label="Select testimonial"
+              className="order-2 flex items-center gap-2 sm:order-1"
+              onKeyDown={(e) => {
+                if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "Home" || e.key === "End") {
+                  e.preventDefault();
+                  if (!api) return;
+                  const last = quotes.length - 1;
+                  let next = selected;
+                  if (e.key === "ArrowLeft") next = selected === 0 ? last : selected - 1;
+                  else if (e.key === "ArrowRight") next = selected === last ? 0 : selected + 1;
+                  else if (e.key === "Home") next = 0;
+                  else if (e.key === "End") next = last;
+                  api.scrollTo(next);
+                  // focus the corresponding dot after state updates
+                  requestAnimationFrame(() => {
+                    const dot = document.getElementById(`testimonial-dot-${next}`);
+                    dot?.focus();
+                  });
+                }
+              }}
+            >
+              {quotes.map((q, i) => {
+                const isActive = i === selected;
+                return (
+                  <button
+                    key={q.name}
+                    id={`testimonial-dot-${i}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={`Go to testimonial ${i + 1} of ${quotes.length}: ${q.name}`}
+                    aria-controls="testimonials-heading"
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => api?.scrollTo(i)}
+                    className={
+                      "h-3 rounded-full outline-none transition-all duration-300 ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze " +
+                      (isActive
+                        ? "w-8 bg-bronze"
+                        : "w-3 bg-forest/25 hover:bg-forest/45")
+                    }
+                  />
+                );
+              })}
+            </div>
+            <div
+              className="order-1 flex justify-end gap-2 sm:order-2"
+              role="group"
+              aria-label="Testimonial carousel controls"
+            >
+              <CarouselPrevious
+                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                aria-label="Previous testimonial"
+                aria-controls="testimonials-heading"
+              />
+              <CarouselNext
+                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                aria-label="Next testimonial"
+                aria-controls="testimonials-heading"
+              />
+            </div>
           </div>
+
         </Carousel>
       </div>
     </section>
