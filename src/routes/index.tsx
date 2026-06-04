@@ -27,6 +27,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
 import heroAvif480 from "@/assets/hero/scrimo-480.avif";
