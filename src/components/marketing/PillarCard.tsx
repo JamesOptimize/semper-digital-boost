@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -20,13 +19,13 @@ export function PillarCard({ title, copy, href, icon }: PillarCardProps) {
       </div>
       <h3 className="mt-6 font-display text-2xl font-bold text-forest">{title}</h3>
       <p className="mt-3 flex-1 text-base leading-relaxed text-foreground/75">{copy}</p>
-      <Link
-        to={href}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-forest transition-colors hover:text-bronze focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream rounded-sm"
+      <a
+        href={href}
+        className="mt-6 inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-forest transition-colors hover:text-bronze focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
       >
         Learn More
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-      </Link>
+      </a>
     </article>
   );
 }
