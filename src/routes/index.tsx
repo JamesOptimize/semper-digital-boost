@@ -167,7 +167,7 @@ const personLd = {
   name: "Dr. Thomas Scrimo",
   jobTitle: "Doctor of Chiropractic",
   honorificSuffix: "DC, CCSP",
-  image: "https://www.semper-chiropractic.com/og-scrimo.jpg",
+  image: "https://www.semper-chiropractic.com/og-cover.jpg",
   worksFor: {
     "@type": "MedicalBusiness",
     name: "Semper Chiropractic",
