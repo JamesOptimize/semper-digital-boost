@@ -1,85 +1,67 @@
+# Softening the Military Voice (−25%) + Visual Polish + Production Readiness
 
-# 2026 Performance Pass — Semper Chiropractic
+Client feedback: the military framing is too heavy. The goal is to keep the veteran identity as a credible differentiator while cutting roughly a quarter of the military language so families and athletes feel equally addressed.
 
-Goal: push the site to Lighthouse 98–100 / CWV "Good" across the board by eliminating image, third‑party, and font costs already identified in the last audit. Scope is presentation + head metadata only — no business logic, routes, or content changes.
+Current state: 74 lines across 9 files carry military phrasing (Marine, USMC, Semper Fidelis, Corps, combat, ruck, tactical, duty). Target: retire about 18–20 of those, concentrated where the language repeats rather than where it earns trust.
 
-## 1. Picture sets for every content image
+## What stays (trust anchors — untouched)
 
-Convert the four remaining JPEGs to the same AVIF/WebP/JPEG responsive ladder we already shipped for the hero.
+- "Veteran Owned & Operated" hero badge.
+- The Veteran & Active Lifestyle service pillar and its `/services#veteran` section.
+- `USMC` in the credentials grids on the homepage and About page.
+- Person / LocalBusiness JSON-LD veteran attributes (real credentials, good for search).
+- The About page's core narrative paragraph about serving as a Marine.
 
-Targets:
-- `src/assets/pillar-athlete.jpg`
-- `src/assets/pillar-family.jpg`
-- `src/assets/pillar-veteran.jpg`
-- `src/assets/clinic-adjustment.jpg`
+## What gets softened (the 25%)
 
-For each: generate 480 / 720 / 960 / 1200 widths in `.avif`, `.webp`, `.jpg` under `src/assets/<name>/` using `sharp` (already proven on hero). Replace `<img src=…>` usages with a small `<ResponsiveImage>` helper that emits:
+Homepage (`src/routes/index.tsx`)
+- Hero headline: "Marine discipline meets clinical excellence." becomes an outcome-led line focused on precision care and getting patients moving again.
+- Meta title/description and OG/Twitter copy: drop "Marine discipline. Clinical excellence." in favor of family/athlete/veteran outcomes; keep "Veteran-Owned" once in the title.
+- Pillar card copy: remove "Semper Fidelis" phrasing; describe the care instead.
+- "Marine values." section heading and body: single reference to his Marine service retained, the second and third repetitions ("Marine precision", "active service members") replaced with plain language.
 
-```tsx
-<picture>
-  <source type="image/avif" srcSet={avif} sizes={sizes} />
-  <source type="image/webp" srcSet={webp} sizes={sizes} />
-  <img src={fallback} srcSet={jpg} sizes={sizes}
-       width={w} height={h} loading="lazy" decoding="async"
-       alt={alt} className={className} />
-</picture>
-```
+About (`src/routes/about.tsx`)
+- Hero subline "Marine discipline. Clinical excellence." replaced with a discipline/accountability line free of military vocabulary.
+- Meta description and OG description: one veteran mention, not two.
+- Credentials row: `USMC` value stays, the "United States Marine Corps" detail line shortened.
 
-- Explicit `width`/`height` on every `<img>` → CLS stays <0.05.
-- `loading="lazy"` + `decoding="async"` on everything below the fold; hero keeps `fetchpriority="high"` + preload (already in place).
-- AVIF mobile target ≤80 KB per pillar, ≤120 KB for clinic shot.
+Timeline (`src/components/marketing/AboutTimeline.tsx`)
+- Section heading "From the Corps to the clinic." becomes a neutral heading such as "The path to the practice."
+- Portrait overlay caption "Semper Fidelis / United States Marine Corps" reduced to a single restrained credential line.
+- Timeline entries: keep the Marine Corps milestone (it is factual history), remove "Semper Fidelis ethos" and "Marine precision" from later entries.
 
-## 2. Lazy-mounted Google Map
+Footer (`src/components/marketing/SiteFooter.tsx`)
+- Remove the helmet emoji line entirely (per the no-emoji standard already in force).
+- Collapse the two-line military blurb to one: veteran-owned care for Roswell families, athletes, and active people.
 
-Replace the always-rendered `<iframe>` in `src/routes/contact.tsx` (and anywhere else `SITE.mapsEmbed` is used) with an IntersectionObserver-gated mount:
+Services (`src/routes/services.tsx`)
+- Veteran pillar copy: drop "Semper Fidelis isn't a slogan"; keep the audience (active-duty, reserve, retired, first responders).
+- Conditions list: "Combat-load spinal compression" and "Ruck, lift & impact recovery" reworded to load-bearing/impact recovery language that still speaks to that audience; "Tactical-athlete" becomes "high-demand athlete".
+- Meta: drop the trailing "Marine discipline. Clinical excellence."
 
-```tsx
-function LazyMap() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setShow(true); io.disconnect(); }
-    }, { rootMargin: "200px" });
-    if (ref.current) io.observe(ref.current);
-    return () => io.disconnect();
-  }, []);
-  return (
-    <div ref={ref} className="aspect-[4/3] w-full rounded-2xl bg-muted">
-      {show && (
-        <iframe src={SITE.mapsEmbed} loading="lazy" title="Map to clinic"
-                className="h-full w-full rounded-2xl border-0"
-                referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-      )}
-    </div>
-  );
-}
-```
+Blog (`src/routes/blog.tsx`)
+- Keep the Veterans post (it serves that audience), soften "former service members" to "veterans" in the excerpt.
 
-Result: zero Google Maps JS/network on initial load → TBT and INP drop sharply on `/contact` and the home contact band.
+Instagram fallback tiles (`src/components/marketing/InstagramFeed.tsx`)
+- Two of the curated captions carry military phrasing; rewrite one and neutralize the other so the grid is not two-thirds military.
 
-## 3. Font + preconnect polish
+## Visual optimization (the 2%)
 
-In `src/routes/__root.tsx` `head().links`:
-- Add `{ rel: "preconnect", href: "https://fonts.googleapis.com" }` (already have gstatic + fontshare).
-- Add a `preload` for the single Satoshi 700 woff2 weight used by display headings (fetch URL from Fontshare CSS, hardcode link with `as: "font"`, `type: "font/woff2"`, `crossOrigin: "anonymous"`).
-- Confirm `font-display: swap` — Fontshare/Google `?display=swap` already covers it.
+Refinement only — no new components, no layout rewrites, no new images.
+- Tighten vertical rhythm on the homepage pillar/story sections to the existing `--space-*` scale so section padding is consistent rather than ad hoc.
+- Normalize heading scale and `tracking-[-0.02em]` / `leading-[1.1]` treatment across homepage, About, and Services so the three pages read as one system.
+- Unify card treatment: one border radius and one `--shadow-elegant` hover elevation across PillarCard, Services columns, and credential blocks.
+- Bronze accent discipline: eyebrow labels, rules, and focus rings only — no bronze on large fills.
+- Confirm every interactive element keeps a visible `focus-visible` bronze ring at the same offset.
 
-## 4. Verification
+## Production readiness
 
-After changes:
-1. `bun run build` and inspect emitted asset sizes for each pillar set.
-2. `browser--performance_profile` on `/` and `/contact` — confirm LCP image is the hero AVIF, no Maps requests on initial load, no CLS from pillar swaps.
-3. Spot-check `<picture>` rendering at 440px viewport (current preview) and desktop.
-
-## Out of scope
-
-- No copy, route, or schema changes.
-- No new dependencies (`sharp` runs in sandbox, not shipped).
-- Hero `<picture>` already done — leave it.
+- Typecheck clean; no unused imports left behind by copy removal (notably image and icon imports on the homepage).
+- Verify no remaining emoji anywhere in `src/`.
+- Re-run the existing Playwright + axe testimonial suite for zero regressions.
+- Confirm every route still has unique title/description/OG/canonical with absolute production URLs.
+- Visual QA at 440px and desktop widths, checking hero `fetchpriority`/preload and the AVIF/WebP/JPEG sets are untouched so LCP and CLS hold.
 
 ## Technical notes
 
-- Build script: a single `/tmp/encode.mjs` using `sharp` loops the four sources × 4 widths × 3 formats (≈48 files). AVIF `quality: 50`, WebP `quality: 78`, JPEG `quality: 82, mozjpeg: true`.
-- Asset paths stay in `src/assets/<name>/<name>-<w>.<ext>` so Vite fingerprints them.
-- The `<ResponsiveImage>` helper lives in `src/components/marketing/ResponsiveImage.tsx` and accepts pre-built srcset strings (kept dumb — no runtime image logic).
+Copy-only edits in route and component files plus Tailwind class normalization. No changes to `ResponsiveImage`, `LazyMap`, asset pipeline, routing, schema structure, or any backend. JSON-LD veteran attributes remain because they are factual credentials, not marketing tone.
