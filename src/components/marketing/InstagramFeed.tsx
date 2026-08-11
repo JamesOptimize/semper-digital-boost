@@ -44,7 +44,7 @@ const FALLBACK: InstagramPost[] = [
   {
     id: "f5",
     permalink: SITE.social.instagram,
-    caption: "Veteran owned. Veteran trusted. Semper Fidelis.",
+    caption: "Veteran owned. Roswell trusted.",
     thumbnail: "",
   },
   {
