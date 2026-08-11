@@ -117,7 +117,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Precision chiropractic care for Roswell families, athletes, and veterans. Marine discipline. Clinical excellence. Book your new patient exam today.",
+          "Precision chiropractic care for Roswell families, athletes, and active adults. Veteran-owned. Book your new patient exam today.",
       },
       { name: "theme-color", content: "#0A3D2A" },
       { property: "og:site_name", content: "Semper Chiropractic" },
@@ -125,9 +125,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Semper Chiropractic — Veteran-Owned Chiropractor in Roswell, GA" },
       { name: "twitter:title", content: "Semper Chiropractic — Veteran-Owned Chiropractor in Roswell, GA" },
-      { name: "description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
-      { property: "og:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
-      { name: "twitter:description", content: "Semper Shine is a modern, mobile-first website designed to attract new patients to Semper Chiropractic." },
+      {
+        property: "og:description",
+        content:
+          "Precision chiropractic care for Roswell families, athletes, and active adults. Veteran-owned.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Precision chiropractic care for Roswell families, athletes, and active adults. Veteran-owned.",
+      },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },
