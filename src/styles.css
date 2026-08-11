@@ -4,9 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Fonts: Satoshi (headings) via Fontshare + Inter (body) via Google */
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+/* Fonts: Satoshi (headings) via Fontshare + Inter (body) via Google — loaded via <link> in __root.tsx */
+
 
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
