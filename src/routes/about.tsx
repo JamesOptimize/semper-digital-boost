@@ -18,7 +18,7 @@ const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 9
 const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 
 const credentials = [
-  { label: "Service", value: "USMC", detail: "United States Marine Corps" },
+  { label: "Service", value: "USMC", detail: "Veteran, honorably served" },
   { label: "Degree", value: "DC", detail: "Doctor of Chiropractic, Life University" },
   { label: "Certification", value: "CCSP", detail: "Certified Chiropractic Sports Physician" },
   { label: "Clinic", value: "Roswell, GA", detail: "859 Mimosa Blvd" },
