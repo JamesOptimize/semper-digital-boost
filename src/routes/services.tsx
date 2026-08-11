@@ -47,20 +47,21 @@ const pillars = [
     eyebrow: "Veteran & Active Lifestyle",
     title: "Disciplined care for those who serve and train.",
     copy:
-      "Semper Fidelis isn't a slogan — it's the operating standard. Care tuned for active-duty, reserve, retired service members, first responders, and anyone who trains like they do.",
+      "Care tuned for active-duty, reserve, and retired service members, first responders, and anyone who trains like they do — with accountability built into every plan.",
     treats: [
-      "Combat-load spinal compression",
-      "Ruck, lift & impact recovery",
+      "Load-bearing spinal compression",
+      "Heavy-carry, lift & impact recovery",
       "Service-connected chronic pain support",
-      "Tactical-athlete mobility & strength",
+      "High-demand athlete mobility & strength",
     ],
     benefits: [
       "Veteran-owned, veteran-operated",
       "Direct scheduling, no rotating staff",
-      "Plans that fit duty and training cycles",
+      "Plans that fit demanding training cycles",
     ],
     icon: VeteranIcon,
   },
+
 ] as const;
 
 const serviceLd = {
