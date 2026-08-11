@@ -20,7 +20,7 @@ const timeline = [
   {
     year: "Marine Corps",
     title: "Service before medicine",
-    copy: "Enlisted in the United States Marine Corps. Forged the discipline, accountability, and Semper Fidelis ethos that still runs the practice today.",
+    copy: "Enlisted in the United States Marine Corps, where he built the discipline and accountability that still shape how he runs the practice.",
     Icon: Flag,
   },
   {
@@ -38,10 +38,11 @@ const timeline = [
   {
     year: "Today",
     title: "Semper Chiropractic, Roswell",
-    copy: "Treating families, athletes, and active service members on Mimosa Blvd with Marine precision and human warmth.",
+    copy: "Treating families, athletes, and active adults on Mimosa Blvd with careful precision and genuine human warmth.",
     Icon: Stethoscope,
   },
 ];
+
 
 export function AboutTimeline() {
   return (
