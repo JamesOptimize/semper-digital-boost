@@ -242,7 +242,7 @@ const reviewsLd = {
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
       author: { "@type": "Person", name: "James K." },
       reviewBody:
-        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+        "I trust this office completely. He understands the body, the discipline, and the goal.",
     },
     {
       "@type": "Review",
@@ -268,7 +268,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Family, sports, and veteran chiropractic care in Roswell. Book your new patient exam today.",
+          "Family, sports, and active-lifestyle chiropractic care in Roswell. Book your new patient exam today.",
       },
       { property: "og:url", content: "https://www.semper-chiropractic.com/" },
       { property: "og:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
@@ -585,7 +585,7 @@ function Testimonials() {
     },
     {
       quote:
-        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+        "I trust this office completely. He understands the body, the discipline, and the goal.",
       name: "James K.",
       role: "U.S. Army (Ret.)",
     },
