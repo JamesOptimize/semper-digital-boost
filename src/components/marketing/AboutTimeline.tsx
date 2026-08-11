@@ -64,19 +64,20 @@ export function AboutTimeline() {
                 jpgSrcSet={portraitJpg}
                 fallbackSrc={heroJpg1200}
                 sizes="(min-width: 768px) 40vw, 100vw"
-                alt="Dr. Thomas Scrimo, USMC veteran and founder of Semper Chiropractic in Roswell, GA"
+                alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
                 width={1200}
                 height={1500}
                 imgClassName="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)] ring-1 ring-bronze/30"
               />
               <div className="absolute -bottom-5 left-5 rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl">
                 <div className="text-[10px] uppercase tracking-[0.25em] text-bronze">
-                  Semper Fidelis
+                  Dr. Thomas Scrimo
                 </div>
                 <div className="mt-1 font-display text-sm font-semibold">
-                  United States Marine Corps
+                  DC · CCSP · Veteran Owned
                 </div>
               </div>
+
             </div>
           </ScrollReveal>
 
