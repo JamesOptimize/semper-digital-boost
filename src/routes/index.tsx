@@ -525,8 +525,8 @@ function DoctorStory() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             Meet Dr. Scrimo
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
-            Marine values.{" "}
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
+            Real accountability.{" "}
             <span className="italic">Clinical mastery.</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-foreground/80">
@@ -536,9 +536,10 @@ function DoctorStory() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-foreground/70">
             Trained at Life University with advanced certification in sports chiropractic (CCSP),
-            he treats families, weekend athletes, and active service members with the same
-            standard he once held in uniform: excellence, always.
+            he treats families, weekend athletes, and active adults with the same standard he has
+            always held: excellence, always.
           </p>
+
 
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
             <div>
