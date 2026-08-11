@@ -433,10 +433,11 @@ function Pillars() {
     },
     {
       title: "Veteran & Active Lifestyle",
-      copy: "Disciplined care rooted in Semper Fidelis for those who serve and train.",
+      copy: "Focused, disciplined care for veterans, first responders, and anyone who trains hard.",
       href: "/services#veteran",
       icon: VeteranIcon,
     },
+
   ];
 
   return (
