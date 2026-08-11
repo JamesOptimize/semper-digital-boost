@@ -329,9 +329,10 @@ function Hero() {
             Your Health is Your Wealth.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
-            Precision chiropractic care for Roswell families, athletes, and those who serve.
-            Marine discipline meets clinical excellence.
+            Precision chiropractic care for Roswell families, athletes, and active adults —
+            built to get you moving well again, and keep you there.
           </p>
+
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
