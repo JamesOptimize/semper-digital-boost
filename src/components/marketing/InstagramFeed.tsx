@@ -20,7 +20,7 @@ const FALLBACK: InstagramPost[] = [
   {
     id: "f1",
     permalink: SITE.social.instagram,
-    caption: "Marine discipline. Clinical mastery. Family-first care.",
+    caption: "Precise adjustments. Clinical mastery. Family-first care.",
     thumbnail: "",
   },
   {
