@@ -261,8 +261,9 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Precision chiropractic care for Roswell families, athletes, and veterans. Marine discipline. Clinical excellence. Book your new patient exam.",
+          "Precision chiropractic care for Roswell families, athletes, and active adults. Personal, one-doctor care. Book your new patient exam.",
       },
+
       { property: "og:title", content: "Semper Chiropractic — Roswell, GA" },
       {
         property: "og:description",
