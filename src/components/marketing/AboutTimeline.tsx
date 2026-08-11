@@ -20,7 +20,7 @@ const timeline = [
   {
     year: "Marine Corps",
     title: "Service before medicine",
-    copy: "Enlisted in the United States Marine Corps. Forged the discipline, accountability, and Semper Fidelis ethos that still runs the practice today.",
+    copy: "Enlisted in the United States Marine Corps, where he built the discipline and accountability that still shape how he runs the practice.",
     Icon: Flag,
   },
   {
@@ -38,10 +38,11 @@ const timeline = [
   {
     year: "Today",
     title: "Semper Chiropractic, Roswell",
-    copy: "Treating families, athletes, and active service members on Mimosa Blvd with Marine precision and human warmth.",
+    copy: "Treating families, athletes, and active adults on Mimosa Blvd with careful precision and genuine human warmth.",
     Icon: Stethoscope,
   },
 ];
+
 
 export function AboutTimeline() {
   return (
@@ -63,19 +64,20 @@ export function AboutTimeline() {
                 jpgSrcSet={portraitJpg}
                 fallbackSrc={heroJpg1200}
                 sizes="(min-width: 768px) 40vw, 100vw"
-                alt="Dr. Thomas Scrimo, USMC veteran and founder of Semper Chiropractic in Roswell, GA"
+                alt="Dr. Thomas Scrimo, founder of Semper Chiropractic in Roswell, GA"
                 width={1200}
                 height={1500}
                 imgClassName="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)] ring-1 ring-bronze/30"
               />
               <div className="absolute -bottom-5 left-5 rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl">
                 <div className="text-[10px] uppercase tracking-[0.25em] text-bronze">
-                  Semper Fidelis
+                  Dr. Thomas Scrimo
                 </div>
                 <div className="mt-1 font-display text-sm font-semibold">
-                  United States Marine Corps
+                  DC · CCSP · Veteran Owned
                 </div>
               </div>
+
             </div>
           </ScrollReveal>
 
@@ -87,9 +89,9 @@ export function AboutTimeline() {
               </p>
               <h2
                 id="about-timeline-heading"
-                className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+                className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
               >
-                From the Corps to the clinic.
+                The path to the practice.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-foreground/75">
                 Every chapter shaped the standard of care Roswell families receive today.

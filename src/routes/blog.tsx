@@ -21,7 +21,7 @@ const posts = [
     slug: "veterans-and-spinal-health",
     title: "Veterans and spinal health: a longer view",
     excerpt:
-      "Why former service members benefit from a long-horizon, discipline-first approach to wellness.",
+      "Why veterans benefit from a long-horizon, discipline-first approach to wellness.",
     date: "Coming soon",
     tag: "Veterans",
   },
@@ -58,7 +58,7 @@ function Blog() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">Wellness blog</p>
-      <h1 className="mt-3 font-display text-5xl font-bold tracking-tight text-forest md:text-6xl">
+      <h1 className="mt-3 font-display text-5xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-6xl">
         Field notes from the clinic.
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-foreground/70">

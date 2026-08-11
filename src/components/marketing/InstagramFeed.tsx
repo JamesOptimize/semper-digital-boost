@@ -20,7 +20,7 @@ const FALLBACK: InstagramPost[] = [
   {
     id: "f1",
     permalink: SITE.social.instagram,
-    caption: "Marine discipline. Clinical mastery. Family-first care.",
+    caption: "Precise adjustments. Clinical mastery. Family-first care.",
     thumbnail: "",
   },
   {
@@ -44,7 +44,7 @@ const FALLBACK: InstagramPost[] = [
   {
     id: "f5",
     permalink: SITE.social.instagram,
-    caption: "Veteran owned. Veteran trusted. Semper Fidelis.",
+    caption: "Veteran owned. Roswell trusted.",
     thumbnail: "",
   },
   {
@@ -139,7 +139,7 @@ export function InstagramFeed() {
             </p>
             <h2
               id="ig-feed-heading"
-              className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+              className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
             >
               Follow the work in motion.
             </h2>

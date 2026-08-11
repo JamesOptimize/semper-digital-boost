@@ -242,7 +242,7 @@ const reviewsLd = {
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
       author: { "@type": "Person", name: "James K." },
       reviewBody:
-        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+        "I trust this office completely. He understands the body, the discipline, and the goal.",
     },
     {
       "@type": "Review",
@@ -261,13 +261,14 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Precision chiropractic care for Roswell families, athletes, and veterans. Marine discipline. Clinical excellence. Book your new patient exam.",
+          "Precision chiropractic care for Roswell families, athletes, and active adults. Personal, one-doctor care. Book your new patient exam.",
       },
+
       { property: "og:title", content: "Semper Chiropractic — Roswell, GA" },
       {
         property: "og:description",
         content:
-          "Family, sports, and veteran chiropractic care in Roswell. Book your new patient exam today.",
+          "Family, sports, and active-lifestyle chiropractic care in Roswell. Book your new patient exam today.",
       },
       { property: "og:url", content: "https://www.semper-chiropractic.com/" },
       { property: "og:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
@@ -283,11 +284,12 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: heroAvif720,
-        imagesrcset: heroAvifSrcSet,
-        imagesizes: heroSizes,
+        imageSrcSet: heroAvifSrcSet,
+        imageSizes: heroSizes,
         type: "image/avif",
-        fetchpriority: "high",
+        fetchPriority: "high",
       },
+
     ],
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
@@ -328,9 +330,10 @@ function Hero() {
             Your Health is Your Wealth.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
-            Precision chiropractic care for Roswell families, athletes, and those who serve.
-            Marine discipline meets clinical excellence.
+            Precision chiropractic care for Roswell families, athletes, and active adults —
+            built to get you moving well again, and keep you there.
           </p>
+
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
@@ -431,10 +434,11 @@ function Pillars() {
     },
     {
       title: "Veteran & Active Lifestyle",
-      copy: "Disciplined care rooted in Semper Fidelis for those who serve and train.",
+      copy: "Focused, disciplined care for veterans, first responders, and anyone who trains hard.",
       href: "/services#veteran",
       icon: VeteranIcon,
     },
+
   ];
 
   return (
@@ -474,7 +478,7 @@ function Services() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Services
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] md:text-5xl">
               Care that meets you where you are.
             </h2>
           </div>
@@ -522,8 +526,8 @@ function DoctorStory() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             Meet Dr. Scrimo
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
-            Marine values.{" "}
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
+            Real accountability.{" "}
             <span className="italic">Clinical mastery.</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-foreground/80">
@@ -533,9 +537,10 @@ function DoctorStory() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-foreground/70">
             Trained at Life University with advanced certification in sports chiropractic (CCSP),
-            he treats families, weekend athletes, and active service members with the same
-            standard he once held in uniform: excellence, always.
+            he treats families, weekend athletes, and active adults with the same standard he has
+            always held: excellence, always.
           </p>
+
 
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
             <div>
@@ -581,7 +586,7 @@ function Testimonials() {
     },
     {
       quote:
-        "As a vet, I trust this office completely. He gets the discipline, the body, and the mission.",
+        "I trust this office completely. He understands the body, the discipline, and the goal.",
       name: "James K.",
       role: "U.S. Army (Ret.)",
     },
@@ -627,7 +632,7 @@ function Testimonials() {
           </p>
           <h2
             id="testimonials-heading"
-            className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+            className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
           >
             Real outcomes from real neighbors.
           </h2>
@@ -808,7 +813,7 @@ function Journey() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             New patient journey
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
             Know exactly what to expect.
           </h2>
           <div className="mt-10 space-y-8">
@@ -852,7 +857,7 @@ function Location() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Visit the clinic
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
               Right in the heart of Roswell.
             </h2>
             <div className="mt-8 space-y-5 text-foreground/80">

@@ -15,12 +15,12 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm text-navy-foreground/70">
-              Veteran-owned chiropractic care for Roswell families, athletes, and those who serve.
-              Marine discipline. Clinical excellence.
+              Veteran-owned chiropractic care for Roswell families, athletes, and active adults.
             </p>
             <p className="mt-6 text-xs uppercase tracking-widest text-bronze">
-              🪖 Veteran owned &amp; operated
+              Veteran owned &amp; operated
             </p>
+
             <div className="mt-6">
               <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-navy-foreground/50">
                 Follow Semper

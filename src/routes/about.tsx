@@ -18,7 +18,7 @@ const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 9
 const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 
 const credentials = [
-  { label: "Service", value: "USMC", detail: "United States Marine Corps" },
+  { label: "Service", value: "USMC", detail: "Veteran, honorably served" },
   { label: "Degree", value: "DC", detail: "Doctor of Chiropractic, Life University" },
   { label: "Certification", value: "CCSP", detail: "Certified Chiropractic Sports Physician" },
   { label: "Clinic", value: "Roswell, GA", detail: "859 Mimosa Blvd" },
@@ -31,13 +31,14 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Marine veteran, Life University-trained Doctor of Chiropractic, and CCSP-certified sports injury specialist serving Roswell, GA.",
+          "Veteran, Life University-trained Doctor of Chiropractic, and CCSP-certified sports injury specialist serving Roswell, GA.",
       },
       { property: "og:title", content: "About Dr. Thomas Scrimo" },
       {
         property: "og:description",
-        content: "The Marine values and clinical training behind Semper Chiropractic.",
+        content: "The values and clinical training behind Semper Chiropractic.",
       },
+
       { property: "og:url", content: "https://www.semper-chiropractic.com/about" },
       { property: "og:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
       { property: "og:image:width", content: "1200" },
@@ -62,9 +63,10 @@ function About() {
             The man behind Semper.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/75">
-            Marine discipline. Clinical excellence. A single doctor, accountable to every patient
+            Disciplined care. Clinical excellence. A single doctor, accountable to every patient
             who walks through the door.
           </p>
+
         </div>
       </section>
 
@@ -95,10 +97,11 @@ function About() {
             <p>
               With advanced certification as a{" "}
               <strong className="text-forest">Certified Chiropractic Sports Physician (CCSP)</strong>,
-              Dr. Scrimo treats elite athletes, weekend warriors, families, and active service
-              members with the same standard of care: excellence, accountability, and the kind
+              Dr. Scrimo treats elite athletes, weekend warriors, families, and active adults
+              with the same standard of care: excellence, accountability, and the kind
               of personal attention that big-box clinics simply don't offer.
             </p>
+
             <blockquote className="border-l-2 border-bronze pl-5 font-display text-2xl italic text-forest">
               "Your health is your wealth. Everything else depends on it."
               <footer className="mt-2 text-sm not-italic text-foreground/60">— Dr. Scrimo</footer>
