@@ -21,7 +21,7 @@ const posts = [
     slug: "veterans-and-spinal-health",
     title: "Veterans and spinal health: a longer view",
     excerpt:
-      "Why former service members benefit from a long-horizon, discipline-first approach to wellness.",
+      "Why veterans benefit from a long-horizon, discipline-first approach to wellness.",
     date: "Coming soon",
     tag: "Veterans",
   },
