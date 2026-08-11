@@ -62,9 +62,10 @@ function About() {
             The man behind Semper.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/75">
-            Marine discipline. Clinical excellence. A single doctor, accountable to every patient
+            Disciplined care. Clinical excellence. A single doctor, accountable to every patient
             who walks through the door.
           </p>
+
         </div>
       </section>
 
