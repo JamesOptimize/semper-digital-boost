@@ -94,8 +94,9 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Family chiropractic, CCSP-certified sports rehab, and veteran-tuned care in Roswell, GA. Marine discipline. Clinical excellence.",
+          "Family chiropractic, CCSP-certified sports rehab, and veteran-tuned care in Roswell, GA. Personal, one-doctor care from Dr. Thomas Scrimo.",
       },
+
       { property: "og:title", content: "Services — Semper Chiropractic" },
       {
         property: "og:description",
