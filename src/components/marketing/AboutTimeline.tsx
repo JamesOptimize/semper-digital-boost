@@ -91,7 +91,7 @@ export function AboutTimeline() {
                 id="about-timeline-heading"
                 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
               >
-                From the Corps to the clinic.
+                The path to the practice.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-foreground/75">
                 Every chapter shaped the standard of care Roswell families receive today.
