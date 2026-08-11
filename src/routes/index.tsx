@@ -477,7 +477,7 @@ function Services() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Services
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] md:text-5xl">
               Care that meets you where you are.
             </h2>
           </div>
@@ -631,7 +631,7 @@ function Testimonials() {
           </p>
           <h2
             id="testimonials-heading"
-            className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+            className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
           >
             Real outcomes from real neighbors.
           </h2>
@@ -812,7 +812,7 @@ function Journey() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             New patient journey
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
             Know exactly what to expect.
           </h2>
           <div className="mt-10 space-y-8">
@@ -856,7 +856,7 @@ function Location() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Visit the clinic
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
               Right in the heart of Roswell.
             </h2>
             <div className="mt-8 space-y-5 text-foreground/80">
