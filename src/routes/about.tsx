@@ -31,13 +31,14 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Marine veteran, Life University-trained Doctor of Chiropractic, and CCSP-certified sports injury specialist serving Roswell, GA.",
+          "Veteran, Life University-trained Doctor of Chiropractic, and CCSP-certified sports injury specialist serving Roswell, GA.",
       },
       { property: "og:title", content: "About Dr. Thomas Scrimo" },
       {
         property: "og:description",
-        content: "The Marine values and clinical training behind Semper Chiropractic.",
+        content: "The values and clinical training behind Semper Chiropractic.",
       },
+
       { property: "og:url", content: "https://www.semper-chiropractic.com/about" },
       { property: "og:image", content: "https://www.semper-chiropractic.com/og-cover.jpg" },
       { property: "og:image:width", content: "1200" },
