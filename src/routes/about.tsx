@@ -97,10 +97,11 @@ function About() {
             <p>
               With advanced certification as a{" "}
               <strong className="text-forest">Certified Chiropractic Sports Physician (CCSP)</strong>,
-              Dr. Scrimo treats elite athletes, weekend warriors, families, and active service
-              members with the same standard of care: excellence, accountability, and the kind
+              Dr. Scrimo treats elite athletes, weekend warriors, families, and active adults
+              with the same standard of care: excellence, accountability, and the kind
               of personal attention that big-box clinics simply don't offer.
             </p>
+
             <blockquote className="border-l-2 border-bronze pl-5 font-display text-2xl italic text-forest">
               "Your health is your wealth. Everything else depends on it."
               <footer className="mt-2 text-sm not-italic text-foreground/60">— Dr. Scrimo</footer>
