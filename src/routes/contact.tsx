@@ -69,7 +69,7 @@ function Contact() {
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <Toaster richColors position="top-center" />
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">Contact</p>
-      <h1 className="mt-3 font-display text-5xl font-bold tracking-tight text-forest md:text-6xl">
+      <h1 className="mt-3 font-display text-5xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-6xl">
         Let's get you scheduled.
       </h1>
 

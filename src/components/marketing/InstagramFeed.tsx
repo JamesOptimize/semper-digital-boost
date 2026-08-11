@@ -139,7 +139,7 @@ export function InstagramFeed() {
             </p>
             <h2
               id="ig-feed-heading"
-              className="mt-3 font-display text-4xl font-bold tracking-tight text-forest md:text-5xl"
+              className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
             >
               Follow the work in motion.
             </h2>
