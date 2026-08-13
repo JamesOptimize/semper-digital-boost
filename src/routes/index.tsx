@@ -265,8 +265,8 @@ function Home() {
       <Services />
       <DoctorStory />
       <AboutTimeline />
-      <Testimonials />
-      <InstagramFeed />
+      <StandardOfCare />
+      <PracticeGallery />
       <Journey />
       <Location />
     </>
