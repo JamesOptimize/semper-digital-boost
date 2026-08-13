@@ -210,49 +210,6 @@ const personLd = {
   ],
 };
 
-const reviewsLd = {
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "@id": "https://www.semper-chiropractic.com/#business",
-  name: "Semper Chiropractic",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "4",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Marcus T." },
-      reviewBody:
-        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Allison R." },
-      reviewBody:
-        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "James K." },
-      reviewBody:
-        "I trust this office completely. He understands the body, the discipline, and the goal.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Brianna M." },
-      reviewBody:
-        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
-    },
-  ],
-};
 
 export const Route = createFileRoute("/")({
   head: () => ({
