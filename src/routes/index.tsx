@@ -43,42 +43,8 @@ import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
 import { AboutTimeline } from "@/components/marketing/AboutTimeline";
-import { InstagramFeed } from "@/components/marketing/InstagramFeed";
+import { PracticeGallery } from "@/components/marketing/PracticeGallery";
 import { PillarCard, FamilyIcon, SportsIcon, VeteranIcon } from "@/components/marketing/PillarCard";
-
-// Pillar + clinic image sets
-import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
-import pillarFamilyAvif720 from "@/assets/pillar-family/pillar-family-720.avif";
-import pillarFamilyAvif960 from "@/assets/pillar-family/pillar-family-960.avif";
-import pillarFamilyAvif1200 from "@/assets/pillar-family/pillar-family-1200.avif";
-import pillarFamilyWebp480 from "@/assets/pillar-family/pillar-family-480.webp";
-import pillarFamilyWebp720 from "@/assets/pillar-family/pillar-family-720.webp";
-import pillarFamilyWebp960 from "@/assets/pillar-family/pillar-family-960.webp";
-import pillarFamilyWebp1200 from "@/assets/pillar-family/pillar-family-1200.webp";
-import pillarFamilyJpg720 from "@/assets/pillar-family/pillar-family-720.jpg";
-import pillarFamilyJpg1200 from "@/assets/pillar-family/pillar-family-1200.jpg";
-
-import pillarAthleteAvif480 from "@/assets/pillar-athlete/pillar-athlete-480.avif";
-import pillarAthleteAvif720 from "@/assets/pillar-athlete/pillar-athlete-720.avif";
-import pillarAthleteAvif960 from "@/assets/pillar-athlete/pillar-athlete-960.avif";
-import pillarAthleteAvif1200 from "@/assets/pillar-athlete/pillar-athlete-1200.avif";
-import pillarAthleteWebp480 from "@/assets/pillar-athlete/pillar-athlete-480.webp";
-import pillarAthleteWebp720 from "@/assets/pillar-athlete/pillar-athlete-720.webp";
-import pillarAthleteWebp960 from "@/assets/pillar-athlete/pillar-athlete-960.webp";
-import pillarAthleteWebp1200 from "@/assets/pillar-athlete/pillar-athlete-1200.webp";
-import pillarAthleteJpg720 from "@/assets/pillar-athlete/pillar-athlete-720.jpg";
-import pillarAthleteJpg1200 from "@/assets/pillar-athlete/pillar-athlete-1200.jpg";
-
-import pillarVeteranAvif480 from "@/assets/pillar-veteran/pillar-veteran-480.avif";
-import pillarVeteranAvif720 from "@/assets/pillar-veteran/pillar-veteran-720.avif";
-import pillarVeteranAvif960 from "@/assets/pillar-veteran/pillar-veteran-960.avif";
-import pillarVeteranAvif1200 from "@/assets/pillar-veteran/pillar-veteran-1200.avif";
-import pillarVeteranWebp480 from "@/assets/pillar-veteran/pillar-veteran-480.webp";
-import pillarVeteranWebp720 from "@/assets/pillar-veteran/pillar-veteran-720.webp";
-import pillarVeteranWebp960 from "@/assets/pillar-veteran/pillar-veteran-960.webp";
-import pillarVeteranWebp1200 from "@/assets/pillar-veteran/pillar-veteran-1200.webp";
-import pillarVeteranJpg720 from "@/assets/pillar-veteran/pillar-veteran-720.jpg";
-import pillarVeteranJpg1200 from "@/assets/pillar-veteran/pillar-veteran-1200.jpg";
 
 import clinicAvif480 from "@/assets/clinic/clinic-480.avif";
 import clinicAvif720 from "@/assets/clinic/clinic-720.avif";
