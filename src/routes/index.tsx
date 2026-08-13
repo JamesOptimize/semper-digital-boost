@@ -569,218 +569,66 @@ function DoctorStory() {
   );
 }
 
-/* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  const quotes = [
+/* ---------------- STANDARD OF CARE ---------------- */
+function StandardOfCare() {
+  const standards = [
     {
-      quote:
-        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
-      name: "Marcus T.",
-      role: "Roswell High lacrosse",
+      icon: Stethoscope,
+      title: "One doctor, start to finish",
+      copy: "Dr. Scrimo performs every exam and every adjustment himself. No rotating providers, no hand-offs.",
     },
     {
-      quote:
-        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
-      name: "Allison R.",
-      role: "Mom of three, Roswell",
+      icon: Activity,
+      title: "Examination before adjustment",
+      copy: "Posture, movement, and neurological screening come first. Care begins only when the findings support it.",
     },
     {
-      quote:
-        "I trust this office completely. He understands the body, the discipline, and the goal.",
-      name: "James K.",
-      role: "U.S. Army (Ret.)",
+      icon: Baby,
+      title: "Technique matched to the patient",
+      copy: "Low-force instrument and gentle mobilization work for infants, children, and prenatal patients; manual work where it's appropriate.",
     },
     {
-      quote:
-        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
-      name: "Brianna M.",
-      role: "Patient, Alpharetta",
+      icon: HeartPulse,
+      title: "A plan with an endpoint",
+      copy: "You'll know the goal, the visit count, and how progress is measured before you commit to anything.",
     },
   ];
 
-  const [api, setApi] = React.useState<CarouselApi | null>(null);
-  const [selected, setSelected] = React.useState(0);
-  const slideRefs = React.useRef<Array<HTMLDivElement | null>>([]);
-  const liveRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    if (!api) return;
-    const onSelect = () => setSelected(api.selectedScrollSnap());
-    onSelect();
-    api.on("select", onSelect);
-    api.on("reInit", onSelect);
-    return () => {
-      api.off("select", onSelect);
-      api.off("reInit", onSelect);
-    };
-  }, [api]);
-
-  // Keep keyboard focus on the active slide when navigating via arrow keys
-  const focusFromKeyboardRef = React.useRef(false);
-  React.useEffect(() => {
-    if (!focusFromKeyboardRef.current) return;
-    focusFromKeyboardRef.current = false;
-    slideRefs.current[selected]?.focus();
-  }, [selected]);
-
   return (
-    <section className="bg-cream" aria-labelledby="testimonials-heading">
+    <section className="bg-background" aria-labelledby="standard-heading">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
-            What patients say
+            The standard of care
           </p>
           <h2
-            id="testimonials-heading"
+            id="standard-heading"
             className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
           >
-            Real outcomes from real neighbors.
+            What every visit looks like here.
           </h2>
+          <p className="mt-5 text-lg leading-relaxed text-foreground/75">
+            Four commitments that hold for every patient, on every visit.
+          </p>
         </div>
 
-        <Carousel
-          className="mt-12"
-          opts={{ align: "start", loop: true }}
-          setApi={setApi}
-          aria-label="Patient testimonials"
-          aria-roledescription="carousel"
-          onKeyDown={(e) => {
-            if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-              focusFromKeyboardRef.current = true;
-            }
-          }}
-        >
-          <CarouselContent aria-live="polite" aria-atomic="false">
-            {quotes.map((q, i) => {
-              const isActive = i === selected;
-              return (
-                <CarouselItem
-                  key={q.name}
-                  className="md:basis-1/2 lg:basis-1/3"
-                >
-                  <div
-                    ref={(el) => {
-                      slideRefs.current[i] = el;
-                    }}
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
-                    aria-current={isActive ? "true" : undefined}
-                    tabIndex={isActive ? 0 : -1}
-                    className="h-full rounded-3xl outline-none ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze"
-                  >
-                    <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
-                      <div>
-                        <div
-                          className="flex"
-                          role="img"
-                          aria-label="Rated 5 out of 5 stars"
-                        >
-                          {Array.from({ length: 5 }).map((_, idx) => (
-                            <Star
-                              key={idx}
-                              className="h-4 w-4 fill-bronze text-bronze"
-                              aria-hidden
-                            />
-                          ))}
-                        </div>
-                        <blockquote
-                          cite={`#testimonial-${i}`}
-                          className="mt-5 font-display text-xl leading-snug text-forest"
-                        >
-                          <p>“{q.quote}”</p>
-                        </blockquote>
-                      </div>
-                      <figcaption className="mt-8 border-t border-border pt-4">
-                        <div className="font-semibold text-foreground">
-                          <cite className="not-italic">{q.name}</cite>
-                        </div>
-                        <div className="text-xs uppercase tracking-widest text-foreground/55">
-                          {q.role}
-                        </div>
-                      </figcaption>
-                    </figure>
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <div
-            ref={liveRef}
-            aria-live="polite"
-            aria-atomic="true"
-            className="sr-only"
-          >
-            {`Showing testimonial ${selected + 1} of ${quotes.length}`}
-          </div>
-          <div
-            className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
-          >
-            <div
-              role="tablist"
-              aria-label="Select testimonial"
-              className="order-2 flex items-center gap-2 sm:order-1"
-              onKeyDown={(e) => {
-                if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "Home" || e.key === "End") {
-                  e.preventDefault();
-                  if (!api) return;
-                  const last = quotes.length - 1;
-                  let next = selected;
-                  if (e.key === "ArrowLeft") next = selected === 0 ? last : selected - 1;
-                  else if (e.key === "ArrowRight") next = selected === last ? 0 : selected + 1;
-                  else if (e.key === "Home") next = 0;
-                  else if (e.key === "End") next = last;
-                  api.scrollTo(next);
-                  // focus the corresponding dot after state updates
-                  requestAnimationFrame(() => {
-                    const dot = document.getElementById(`testimonial-dot-${next}`);
-                    dot?.focus();
-                  });
-                }
-              }}
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+          {standards.map((s) => (
+            <li
+              key={s.title}
+              className="flex h-full flex-col rounded-3xl border border-border bg-card p-8"
             >
-              {quotes.map((q, i) => {
-                const isActive = i === selected;
-                return (
-                  <button
-                    key={q.name}
-                    id={`testimonial-dot-${i}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-label={`Go to testimonial ${i + 1} of ${quotes.length}: ${q.name}`}
-                    aria-controls="testimonials-heading"
-                    tabIndex={isActive ? 0 : -1}
-                    onClick={() => api?.scrollTo(i)}
-                    className={
-                      "h-3 rounded-full outline-none transition-all duration-300 ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze " +
-                      (isActive
-                        ? "w-8 bg-bronze"
-                        : "w-3 bg-forest/25 hover:bg-forest/45")
-                    }
-                  />
-                );
-              })}
-            </div>
-            <div
-              className="order-1 flex justify-end gap-2 sm:order-2"
-              role="group"
-              aria-label="Testimonial carousel controls"
-            >
-              <CarouselPrevious
-                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-                aria-label="Previous testimonial"
-                aria-controls="testimonials-heading"
-              />
-              <CarouselNext
-                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-                aria-label="Next testimonial"
-                aria-controls="testimonials-heading"
-              />
-            </div>
-          </div>
-
-        </Carousel>
+              <div
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-bronze/40 text-bronze"
+                aria-hidden="true"
+              >
+                <s.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-6 font-display text-2xl font-bold text-forest">{s.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-foreground/75">{s.copy}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
