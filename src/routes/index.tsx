@@ -96,12 +96,12 @@ const heroWebpSrcSet = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960}
 const heroJpgSrcSet = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 const heroSizes = "(min-width: 768px) 42vw, 100vw";
 
-const pillarSizes = "(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw";
 const clinicSizes = "(min-width: 768px) 40vw, 100vw";
 
 const buildSet = (a: string, b: string, c: string, d: string) =>
   `${a} 480w, ${b} 720w, ${c} 960w, ${d} 1200w`;
 const buildJpgSet = (a: string, b: string) => `${a} 720w, ${b} 1200w`;
+
 
 
 const clinicSet = {
