@@ -12,10 +12,23 @@ import heroWebp960 from "@/assets/hero/scrimo-960.webp";
 import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
 import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
+import teamAvif480 from "@/assets/team/team-480.avif";
+import teamAvif720 from "@/assets/team/team-720.avif";
+import teamAvif960 from "@/assets/team/team-960.avif";
+import teamAvif1200 from "@/assets/team/team-1200.avif";
+import teamWebp480 from "@/assets/team/team-480.webp";
+import teamWebp720 from "@/assets/team/team-720.webp";
+import teamWebp960 from "@/assets/team/team-960.webp";
+import teamWebp1200 from "@/assets/team/team-1200.webp";
+import teamJpg720 from "@/assets/team/team-720.jpg";
+import teamJpg1200 from "@/assets/team/team-1200.jpg";
 
 const portraitAvif = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
 const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
 const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
+const teamAvif = `${teamAvif480} 480w, ${teamAvif720} 720w, ${teamAvif960} 960w, ${teamAvif1200} 1200w`;
+const teamWebp = `${teamWebp480} 480w, ${teamWebp720} 720w, ${teamWebp960} 960w, ${teamWebp1200} 1200w`;
+const teamJpg = `${teamJpg720} 720w, ${teamJpg1200} 1200w`;
 
 const credentials = [
   { label: "Service", value: "USMC", detail: "Veteran, honorably served" },
