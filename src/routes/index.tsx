@@ -103,26 +103,6 @@ const buildSet = (a: string, b: string, c: string, d: string) =>
   `${a} 480w, ${b} 720w, ${c} 960w, ${d} 1200w`;
 const buildJpgSet = (a: string, b: string) => `${a} 720w, ${b} 1200w`;
 
-const pillarSets = {
-  family: {
-    avifSrcSet: buildSet(pillarFamilyAvif480, pillarFamilyAvif720, pillarFamilyAvif960, pillarFamilyAvif1200),
-    webpSrcSet: buildSet(pillarFamilyWebp480, pillarFamilyWebp720, pillarFamilyWebp960, pillarFamilyWebp1200),
-    jpgSrcSet: buildJpgSet(pillarFamilyJpg720, pillarFamilyJpg1200),
-    fallbackSrc: pillarFamilyJpg1200,
-  },
-  athlete: {
-    avifSrcSet: buildSet(pillarAthleteAvif480, pillarAthleteAvif720, pillarAthleteAvif960, pillarAthleteAvif1200),
-    webpSrcSet: buildSet(pillarAthleteWebp480, pillarAthleteWebp720, pillarAthleteWebp960, pillarAthleteWebp1200),
-    jpgSrcSet: buildJpgSet(pillarAthleteJpg720, pillarAthleteJpg1200),
-    fallbackSrc: pillarAthleteJpg1200,
-  },
-  veteran: {
-    avifSrcSet: buildSet(pillarVeteranAvif480, pillarVeteranAvif720, pillarVeteranAvif960, pillarVeteranAvif1200),
-    webpSrcSet: buildSet(pillarVeteranWebp480, pillarVeteranWebp720, pillarVeteranWebp960, pillarVeteranWebp1200),
-    jpgSrcSet: buildJpgSet(pillarVeteranJpg720, pillarVeteranJpg1200),
-    fallbackSrc: pillarVeteranJpg1200,
-  },
-} as const;
 
 const clinicSet = {
   avifSrcSet: buildSet(clinicAvif480, clinicAvif720, clinicAvif960, clinicAvif1200),
