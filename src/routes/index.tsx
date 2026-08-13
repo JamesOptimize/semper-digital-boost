@@ -294,7 +294,6 @@ export const Route = createFileRoute("/")({
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
       { type: "application/ld+json", children: JSON.stringify(personLd) },
-      { type: "application/ld+json", children: JSON.stringify(reviewsLd) },
     ],
   }),
   component: Home,
