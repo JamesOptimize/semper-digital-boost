@@ -133,8 +133,40 @@ function About() {
       {/* Timeline */}
       <AboutTimeline />
 
+      {/* The practice */}
+      <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 md:pt-24 lg:px-8">
+        <div className="grid items-center gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <ResponsiveImage
+              avifSrcSet={teamAvif}
+              webpSrcSet={teamWebp}
+              jpgSrcSet={teamJpg}
+              fallbackSrc={teamJpg1200}
+              sizes="(min-width: 768px) 45vw, 100vw"
+              alt="Dr. Thomas Scrimo and Mrs. Scrimo outside Semper Chiropractic on Mimosa Blvd in Roswell, GA"
+              width={1280}
+              height={1600}
+              className="block aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-elegant)]"
+              imgClassName="h-full w-full object-cover"
+            />
+          </div>
+          <div className="md:col-span-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
+              The practice
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-4xl">
+              A family-run office on Mimosa Blvd.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-foreground/75">
+              Semper Chiropractic is owned and run by the Scrimos. You'll see the same faces at the
+              front desk and in the treatment room every visit — that continuity is the point.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="mx-auto max-w-5xl px-4 pb-20 pt-8 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-5xl px-4 pb-20 pt-16 sm:px-6 md:pt-24 lg:px-8">
         <div className="rounded-3xl bg-forest p-10 text-forest-foreground md:p-12">
           <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-4xl">
             Ready when you are.
