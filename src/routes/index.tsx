@@ -392,13 +392,9 @@ function TrustBar() {
     <section className="border-y border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-6 sm:px-6 md:flex-row lg:px-8">
         <div className="flex items-center gap-2">
-          <div className="flex" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-bronze text-bronze" />
-            ))}
-          </div>
+          <Award className="h-4 w-4 text-bronze" aria-hidden />
           <span className="text-sm font-medium text-foreground/80">
-            5.0 on Google • Verified patient reviews
+            Doctor of Chiropractic · CCSP-certified sports physician
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-widest text-foreground/55">
