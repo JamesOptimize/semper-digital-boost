@@ -1,7 +1,6 @@
-import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Star,
+  Award,
   ShieldCheck,
   HeartPulse,
   Activity,
@@ -21,14 +20,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
 import heroAvif480 from "@/assets/hero/scrimo-480.avif";
 import heroAvif720 from "@/assets/hero/scrimo-720.avif";
@@ -43,42 +34,8 @@ import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
 import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
 import { AboutTimeline } from "@/components/marketing/AboutTimeline";
-import { InstagramFeed } from "@/components/marketing/InstagramFeed";
+import { PracticeGallery } from "@/components/marketing/PracticeGallery";
 import { PillarCard, FamilyIcon, SportsIcon, VeteranIcon } from "@/components/marketing/PillarCard";
-
-// Pillar + clinic image sets
-import pillarFamilyAvif480 from "@/assets/pillar-family/pillar-family-480.avif";
-import pillarFamilyAvif720 from "@/assets/pillar-family/pillar-family-720.avif";
-import pillarFamilyAvif960 from "@/assets/pillar-family/pillar-family-960.avif";
-import pillarFamilyAvif1200 from "@/assets/pillar-family/pillar-family-1200.avif";
-import pillarFamilyWebp480 from "@/assets/pillar-family/pillar-family-480.webp";
-import pillarFamilyWebp720 from "@/assets/pillar-family/pillar-family-720.webp";
-import pillarFamilyWebp960 from "@/assets/pillar-family/pillar-family-960.webp";
-import pillarFamilyWebp1200 from "@/assets/pillar-family/pillar-family-1200.webp";
-import pillarFamilyJpg720 from "@/assets/pillar-family/pillar-family-720.jpg";
-import pillarFamilyJpg1200 from "@/assets/pillar-family/pillar-family-1200.jpg";
-
-import pillarAthleteAvif480 from "@/assets/pillar-athlete/pillar-athlete-480.avif";
-import pillarAthleteAvif720 from "@/assets/pillar-athlete/pillar-athlete-720.avif";
-import pillarAthleteAvif960 from "@/assets/pillar-athlete/pillar-athlete-960.avif";
-import pillarAthleteAvif1200 from "@/assets/pillar-athlete/pillar-athlete-1200.avif";
-import pillarAthleteWebp480 from "@/assets/pillar-athlete/pillar-athlete-480.webp";
-import pillarAthleteWebp720 from "@/assets/pillar-athlete/pillar-athlete-720.webp";
-import pillarAthleteWebp960 from "@/assets/pillar-athlete/pillar-athlete-960.webp";
-import pillarAthleteWebp1200 from "@/assets/pillar-athlete/pillar-athlete-1200.webp";
-import pillarAthleteJpg720 from "@/assets/pillar-athlete/pillar-athlete-720.jpg";
-import pillarAthleteJpg1200 from "@/assets/pillar-athlete/pillar-athlete-1200.jpg";
-
-import pillarVeteranAvif480 from "@/assets/pillar-veteran/pillar-veteran-480.avif";
-import pillarVeteranAvif720 from "@/assets/pillar-veteran/pillar-veteran-720.avif";
-import pillarVeteranAvif960 from "@/assets/pillar-veteran/pillar-veteran-960.avif";
-import pillarVeteranAvif1200 from "@/assets/pillar-veteran/pillar-veteran-1200.avif";
-import pillarVeteranWebp480 from "@/assets/pillar-veteran/pillar-veteran-480.webp";
-import pillarVeteranWebp720 from "@/assets/pillar-veteran/pillar-veteran-720.webp";
-import pillarVeteranWebp960 from "@/assets/pillar-veteran/pillar-veteran-960.webp";
-import pillarVeteranWebp1200 from "@/assets/pillar-veteran/pillar-veteran-1200.webp";
-import pillarVeteranJpg720 from "@/assets/pillar-veteran/pillar-veteran-720.jpg";
-import pillarVeteranJpg1200 from "@/assets/pillar-veteran/pillar-veteran-1200.jpg";
 
 import clinicAvif480 from "@/assets/clinic/clinic-480.avif";
 import clinicAvif720 from "@/assets/clinic/clinic-720.avif";
@@ -96,33 +53,13 @@ const heroWebpSrcSet = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960}
 const heroJpgSrcSet = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
 const heroSizes = "(min-width: 768px) 42vw, 100vw";
 
-const pillarSizes = "(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw";
 const clinicSizes = "(min-width: 768px) 40vw, 100vw";
 
 const buildSet = (a: string, b: string, c: string, d: string) =>
   `${a} 480w, ${b} 720w, ${c} 960w, ${d} 1200w`;
 const buildJpgSet = (a: string, b: string) => `${a} 720w, ${b} 1200w`;
 
-const pillarSets = {
-  family: {
-    avifSrcSet: buildSet(pillarFamilyAvif480, pillarFamilyAvif720, pillarFamilyAvif960, pillarFamilyAvif1200),
-    webpSrcSet: buildSet(pillarFamilyWebp480, pillarFamilyWebp720, pillarFamilyWebp960, pillarFamilyWebp1200),
-    jpgSrcSet: buildJpgSet(pillarFamilyJpg720, pillarFamilyJpg1200),
-    fallbackSrc: pillarFamilyJpg1200,
-  },
-  athlete: {
-    avifSrcSet: buildSet(pillarAthleteAvif480, pillarAthleteAvif720, pillarAthleteAvif960, pillarAthleteAvif1200),
-    webpSrcSet: buildSet(pillarAthleteWebp480, pillarAthleteWebp720, pillarAthleteWebp960, pillarAthleteWebp1200),
-    jpgSrcSet: buildJpgSet(pillarAthleteJpg720, pillarAthleteJpg1200),
-    fallbackSrc: pillarAthleteJpg1200,
-  },
-  veteran: {
-    avifSrcSet: buildSet(pillarVeteranAvif480, pillarVeteranAvif720, pillarVeteranAvif960, pillarVeteranAvif1200),
-    webpSrcSet: buildSet(pillarVeteranWebp480, pillarVeteranWebp720, pillarVeteranWebp960, pillarVeteranWebp1200),
-    jpgSrcSet: buildJpgSet(pillarVeteranJpg720, pillarVeteranJpg1200),
-    fallbackSrc: pillarVeteranJpg1200,
-  },
-} as const;
+
 
 const clinicSet = {
   avifSrcSet: buildSet(clinicAvif480, clinicAvif720, clinicAvif960, clinicAvif1200),
@@ -210,49 +147,6 @@ const personLd = {
   ],
 };
 
-const reviewsLd = {
-  "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  "@id": "https://www.semper-chiropractic.com/#business",
-  name: "Semper Chiropractic",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "4",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Marcus T." },
-      reviewBody:
-        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Allison R." },
-      reviewBody:
-        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "James K." },
-      reviewBody:
-        "I trust this office completely. He understands the body, the discipline, and the goal.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Brianna M." },
-      reviewBody:
-        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
-    },
-  ],
-};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -294,7 +188,6 @@ export const Route = createFileRoute("/")({
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(faqLd) },
       { type: "application/ld+json", children: JSON.stringify(personLd) },
-      { type: "application/ld+json", children: JSON.stringify(reviewsLd) },
     ],
   }),
   component: Home,
@@ -309,8 +202,8 @@ function Home() {
       <Services />
       <DoctorStory />
       <AboutTimeline />
-      <Testimonials />
-      <InstagramFeed />
+      <StandardOfCare />
+      <PracticeGallery />
       <Journey />
       <Location />
     </>
@@ -392,13 +285,9 @@ function TrustBar() {
     <section className="border-y border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-6 sm:px-6 md:flex-row lg:px-8">
         <div className="flex items-center gap-2">
-          <div className="flex" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-bronze text-bronze" />
-            ))}
-          </div>
+          <Award className="h-4 w-4 text-bronze" aria-hidden />
           <span className="text-sm font-medium text-foreground/80">
-            5.0 on Google • Verified patient reviews
+            Doctor of Chiropractic · CCSP-certified sports physician
           </span>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-widest text-foreground/55">
@@ -569,218 +458,66 @@ function DoctorStory() {
   );
 }
 
-/* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  const quotes = [
+/* ---------------- STANDARD OF CARE ---------------- */
+function StandardOfCare() {
+  const standards = [
     {
-      quote:
-        "Dr. Scrimo got me back on the field three weeks ahead of schedule. The man treats you like family.",
-      name: "Marcus T.",
-      role: "Roswell High lacrosse",
+      icon: Stethoscope,
+      title: "One doctor, start to finish",
+      copy: "Dr. Scrimo performs every exam and every adjustment himself. No rotating providers, no hand-offs.",
     },
     {
-      quote:
-        "Gentle, thorough, and unbelievably good with my kids. Our whole family is in his care now.",
-      name: "Allison R.",
-      role: "Mom of three, Roswell",
+      icon: Activity,
+      title: "Examination before adjustment",
+      copy: "Posture, movement, and neurological screening come first. Care begins only when the findings support it.",
     },
     {
-      quote:
-        "I trust this office completely. He understands the body, the discipline, and the goal.",
-      name: "James K.",
-      role: "U.S. Army (Ret.)",
+      icon: Baby,
+      title: "Technique matched to the patient",
+      copy: "Low-force instrument and gentle mobilization work for infants, children, and prenatal patients; manual work where it's appropriate.",
     },
     {
-      quote:
-        "Prenatal care that actually felt safe. I walked out of every visit lighter than I came in.",
-      name: "Brianna M.",
-      role: "Patient, Alpharetta",
+      icon: HeartPulse,
+      title: "A plan with an endpoint",
+      copy: "You'll know the goal, the visit count, and how progress is measured before you commit to anything.",
     },
   ];
 
-  const [api, setApi] = React.useState<CarouselApi | null>(null);
-  const [selected, setSelected] = React.useState(0);
-  const slideRefs = React.useRef<Array<HTMLDivElement | null>>([]);
-  const liveRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    if (!api) return;
-    const onSelect = () => setSelected(api.selectedScrollSnap());
-    onSelect();
-    api.on("select", onSelect);
-    api.on("reInit", onSelect);
-    return () => {
-      api.off("select", onSelect);
-      api.off("reInit", onSelect);
-    };
-  }, [api]);
-
-  // Keep keyboard focus on the active slide when navigating via arrow keys
-  const focusFromKeyboardRef = React.useRef(false);
-  React.useEffect(() => {
-    if (!focusFromKeyboardRef.current) return;
-    focusFromKeyboardRef.current = false;
-    slideRefs.current[selected]?.focus();
-  }, [selected]);
-
   return (
-    <section className="bg-cream" aria-labelledby="testimonials-heading">
+    <section className="bg-background" aria-labelledby="standard-heading">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
-            What patients say
+            The standard of care
           </p>
           <h2
-            id="testimonials-heading"
+            id="standard-heading"
             className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
           >
-            Real outcomes from real neighbors.
+            What every visit looks like here.
           </h2>
+          <p className="mt-5 text-lg leading-relaxed text-foreground/75">
+            Four commitments that hold for every patient, on every visit.
+          </p>
         </div>
 
-        <Carousel
-          className="mt-12"
-          opts={{ align: "start", loop: true }}
-          setApi={setApi}
-          aria-label="Patient testimonials"
-          aria-roledescription="carousel"
-          onKeyDown={(e) => {
-            if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-              focusFromKeyboardRef.current = true;
-            }
-          }}
-        >
-          <CarouselContent aria-live="polite" aria-atomic="false">
-            {quotes.map((q, i) => {
-              const isActive = i === selected;
-              return (
-                <CarouselItem
-                  key={q.name}
-                  className="md:basis-1/2 lg:basis-1/3"
-                >
-                  <div
-                    ref={(el) => {
-                      slideRefs.current[i] = el;
-                    }}
-                    role="group"
-                    aria-roledescription="slide"
-                    aria-label={`Testimonial ${i + 1} of ${quotes.length}`}
-                    aria-current={isActive ? "true" : undefined}
-                    tabIndex={isActive ? 0 : -1}
-                    className="h-full rounded-3xl outline-none ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze"
-                  >
-                    <figure className="flex h-full flex-col justify-between rounded-3xl bg-card p-8 ring-1 ring-border">
-                      <div>
-                        <div
-                          className="flex"
-                          role="img"
-                          aria-label="Rated 5 out of 5 stars"
-                        >
-                          {Array.from({ length: 5 }).map((_, idx) => (
-                            <Star
-                              key={idx}
-                              className="h-4 w-4 fill-bronze text-bronze"
-                              aria-hidden
-                            />
-                          ))}
-                        </div>
-                        <blockquote
-                          cite={`#testimonial-${i}`}
-                          className="mt-5 font-display text-xl leading-snug text-forest"
-                        >
-                          <p>“{q.quote}”</p>
-                        </blockquote>
-                      </div>
-                      <figcaption className="mt-8 border-t border-border pt-4">
-                        <div className="font-semibold text-foreground">
-                          <cite className="not-italic">{q.name}</cite>
-                        </div>
-                        <div className="text-xs uppercase tracking-widest text-foreground/55">
-                          {q.role}
-                        </div>
-                      </figcaption>
-                    </figure>
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <div
-            ref={liveRef}
-            aria-live="polite"
-            aria-atomic="true"
-            className="sr-only"
-          >
-            {`Showing testimonial ${selected + 1} of ${quotes.length}`}
-          </div>
-          <div
-            className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
-          >
-            <div
-              role="tablist"
-              aria-label="Select testimonial"
-              className="order-2 flex items-center gap-2 sm:order-1"
-              onKeyDown={(e) => {
-                if (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "Home" || e.key === "End") {
-                  e.preventDefault();
-                  if (!api) return;
-                  const last = quotes.length - 1;
-                  let next = selected;
-                  if (e.key === "ArrowLeft") next = selected === 0 ? last : selected - 1;
-                  else if (e.key === "ArrowRight") next = selected === last ? 0 : selected + 1;
-                  else if (e.key === "Home") next = 0;
-                  else if (e.key === "End") next = last;
-                  api.scrollTo(next);
-                  // focus the corresponding dot after state updates
-                  requestAnimationFrame(() => {
-                    const dot = document.getElementById(`testimonial-dot-${next}`);
-                    dot?.focus();
-                  });
-                }
-              }}
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+          {standards.map((s) => (
+            <li
+              key={s.title}
+              className="flex h-full flex-col rounded-3xl border border-border bg-card p-8"
             >
-              {quotes.map((q, i) => {
-                const isActive = i === selected;
-                return (
-                  <button
-                    key={q.name}
-                    id={`testimonial-dot-${i}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-label={`Go to testimonial ${i + 1} of ${quotes.length}: ${q.name}`}
-                    aria-controls="testimonials-heading"
-                    tabIndex={isActive ? 0 : -1}
-                    onClick={() => api?.scrollTo(i)}
-                    className={
-                      "h-3 rounded-full outline-none transition-all duration-300 ring-offset-2 ring-offset-cream focus-visible:ring-2 focus-visible:ring-bronze " +
-                      (isActive
-                        ? "w-8 bg-bronze"
-                        : "w-3 bg-forest/25 hover:bg-forest/45")
-                    }
-                  />
-                );
-              })}
-            </div>
-            <div
-              className="order-1 flex justify-end gap-2 sm:order-2"
-              role="group"
-              aria-label="Testimonial carousel controls"
-            >
-              <CarouselPrevious
-                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-                aria-label="Previous testimonial"
-                aria-controls="testimonials-heading"
-              />
-              <CarouselNext
-                className="static translate-y-0 focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
-                aria-label="Next testimonial"
-                aria-controls="testimonials-heading"
-              />
-            </div>
-          </div>
-
-        </Carousel>
+              <div
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-bronze/40 text-bronze"
+                aria-hidden="true"
+              >
+                <s.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-6 font-display text-2xl font-bold text-forest">{s.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-foreground/75">{s.copy}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

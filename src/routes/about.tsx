@@ -12,10 +12,23 @@ import heroWebp960 from "@/assets/hero/scrimo-960.webp";
 import heroWebp1200 from "@/assets/hero/scrimo-1200.webp";
 import heroJpg720 from "@/assets/hero/scrimo-720.jpg";
 import heroJpg1200 from "@/assets/hero/scrimo-1200.jpg";
+import teamAvif480 from "@/assets/team/team-480.avif";
+import teamAvif720 from "@/assets/team/team-720.avif";
+import teamAvif960 from "@/assets/team/team-960.avif";
+import teamAvif1200 from "@/assets/team/team-1200.avif";
+import teamWebp480 from "@/assets/team/team-480.webp";
+import teamWebp720 from "@/assets/team/team-720.webp";
+import teamWebp960 from "@/assets/team/team-960.webp";
+import teamWebp1200 from "@/assets/team/team-1200.webp";
+import teamJpg720 from "@/assets/team/team-720.jpg";
+import teamJpg1200 from "@/assets/team/team-1200.jpg";
 
 const portraitAvif = `${heroAvif480} 480w, ${heroAvif720} 720w, ${heroAvif960} 960w, ${heroAvif1200} 1200w`;
 const portraitWebp = `${heroWebp480} 480w, ${heroWebp720} 720w, ${heroWebp960} 960w, ${heroWebp1200} 1200w`;
 const portraitJpg = `${heroJpg720} 720w, ${heroJpg1200} 1200w`;
+const teamAvif = `${teamAvif480} 480w, ${teamAvif720} 720w, ${teamAvif960} 960w, ${teamAvif1200} 1200w`;
+const teamWebp = `${teamWebp480} 480w, ${teamWebp720} 720w, ${teamWebp960} 960w, ${teamWebp1200} 1200w`;
+const teamJpg = `${teamJpg720} 720w, ${teamJpg1200} 1200w`;
 
 const credentials = [
   { label: "Service", value: "USMC", detail: "Veteran, honorably served" },
@@ -133,8 +146,40 @@ function About() {
       {/* Timeline */}
       <AboutTimeline />
 
+      {/* The practice */}
+      <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 md:pt-24 lg:px-8">
+        <div className="grid items-center gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <ResponsiveImage
+              avifSrcSet={teamAvif}
+              webpSrcSet={teamWebp}
+              jpgSrcSet={teamJpg}
+              fallbackSrc={teamJpg1200}
+              sizes="(min-width: 768px) 45vw, 100vw"
+              alt="Dr. Thomas Scrimo and Mrs. Scrimo outside Semper Chiropractic on Mimosa Blvd in Roswell, GA"
+              width={1280}
+              height={1600}
+              className="block aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-elegant)]"
+              imgClassName="h-full w-full object-cover"
+            />
+          </div>
+          <div className="md:col-span-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
+              The practice
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-4xl">
+              A family-run office on Mimosa Blvd.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-foreground/75">
+              Semper Chiropractic is owned and run by the Scrimos. You'll see the same faces at the
+              front desk and in the treatment room every visit — that continuity is the point.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="mx-auto max-w-5xl px-4 pb-20 pt-8 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-5xl px-4 pb-20 pt-16 sm:px-6 md:pt-24 lg:px-8">
         <div className="rounded-3xl bg-forest p-10 text-forest-foreground md:p-12">
           <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] md:text-4xl">
             Ready when you are.
