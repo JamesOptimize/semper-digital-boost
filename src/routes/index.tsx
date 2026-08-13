@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Star,
+  Award,
   ShieldCheck,
   HeartPulse,
   Activity,
@@ -21,14 +21,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
 import { SITE } from "@/lib/site";
 import heroAvif480 from "@/assets/hero/scrimo-480.avif";
 import heroAvif720 from "@/assets/hero/scrimo-720.avif";
