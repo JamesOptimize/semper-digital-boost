@@ -192,18 +192,28 @@ export const Route = createFileRoute("/")({
       { type: "application/ld+json", children: JSON.stringify(personLd) },
     ],
   }),
+  loader: async (): Promise<ReviewsPayload> => {
+    try {
+      return await getGoogleReviews();
+    } catch {
+      return EMPTY_REVIEWS;
+    }
+  },
+  errorComponent: () => null,
   component: Home,
 });
 
 function Home() {
+  const reviews = Route.useLoaderData();
   return (
     <>
       <Hero />
-      <TrustBar />
+      <TrustBar rating={reviews.rating} reviewCount={reviews.reviewCount} />
       <Pillars />
       <Services />
       <DoctorStory />
       <AboutTimeline />
+      <GoogleReviews {...reviews} />
       <StandardOfCare />
       <PracticeGallery />
       <Journey />
