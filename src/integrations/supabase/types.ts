@@ -14,7 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      google_place_stats: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          last_synced_at: string | null
+          maps_uri: string | null
+          place_id: string
+          rating: number | null
+          updated_at: string
+          user_rating_count: number | null
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          last_synced_at?: string | null
+          maps_uri?: string | null
+          place_id: string
+          rating?: number | null
+          updated_at?: string
+          user_rating_count?: number | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          last_synced_at?: string | null
+          maps_uri?: string | null
+          place_id?: string
+          rating?: number | null
+          updated_at?: string
+          user_rating_count?: number | null
+        }
+        Relationships: []
+      }
+      google_reviews: {
+        Row: {
+          author_name: string
+          author_photo_url: string | null
+          author_profile_url: string | null
+          created_at: string
+          first_seen_at: string
+          id: string
+          is_featured: boolean
+          is_hidden: boolean
+          place_id: string
+          published_at: string | null
+          rating: number
+          relative_time: string | null
+          review_key: string
+          review_url: string | null
+          text: string | null
+          updated_at: string
+        }
+        Insert: {
+          author_name: string
+          author_photo_url?: string | null
+          author_profile_url?: string | null
+          created_at?: string
+          first_seen_at?: string
+          id?: string
+          is_featured?: boolean
+          is_hidden?: boolean
+          place_id: string
+          published_at?: string | null
+          rating: number
+          relative_time?: string | null
+          review_key: string
+          review_url?: string | null
+          text?: string | null
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string
+          author_photo_url?: string | null
+          author_profile_url?: string | null
+          created_at?: string
+          first_seen_at?: string
+          id?: string
+          is_featured?: boolean
+          is_hidden?: boolean
+          place_id?: string
+          published_at?: string | null
+          rating?: number
+          relative_time?: string | null
+          review_key?: string
+          review_url?: string | null
+          text?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
