@@ -121,7 +121,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reviews.slice(0, 6).map((review, index) => (
-            <ScrollReveal key={review.id} delay={index * 60}>
+            <ScrollReveal key={review.id} delay={index * 0.08}>
               <ReviewCard review={review} />
             </ScrollReveal>
           ))}
