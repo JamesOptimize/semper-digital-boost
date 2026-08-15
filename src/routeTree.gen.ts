@@ -14,6 +14,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicHooksSyncGoogleReviewsRouteImport } from './routes/api/public/hooks/sync-google-reviews'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -40,6 +41,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHooksSyncGoogleReviewsRoute =
+  ApiPublicHooksSyncGoogleReviewsRouteImport.update({
+    id: '/api/public/hooks/sync-google-reviews',
+    path: '/api/public/hooks/sync-google-reviews',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +54,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/api/public/hooks/sync-google-reviews': typeof ApiPublicHooksSyncGoogleReviewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +62,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/api/public/hooks/sync-google-reviews': typeof ApiPublicHooksSyncGoogleReviewsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +71,33 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/api/public/hooks/sync-google-reviews': typeof ApiPublicHooksSyncGoogleReviewsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/blog' | '/contact' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/services'
+    | '/api/public/hooks/sync-google-reviews'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/blog' | '/contact' | '/services'
-  id: '__root__' | '/' | '/about' | '/blog' | '/contact' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/services'
+    | '/api/public/hooks/sync-google-reviews'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/services'
+    | '/api/public/hooks/sync-google-reviews'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +106,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  ApiPublicHooksSyncGoogleReviewsRoute: typeof ApiPublicHooksSyncGoogleReviewsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +146,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/sync-google-reviews': {
+      id: '/api/public/hooks/sync-google-reviews'
+      path: '/api/public/hooks/sync-google-reviews'
+      fullPath: '/api/public/hooks/sync-google-reviews'
+      preLoaderRoute: typeof ApiPublicHooksSyncGoogleReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +162,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  ApiPublicHooksSyncGoogleReviewsRoute: ApiPublicHooksSyncGoogleReviewsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
