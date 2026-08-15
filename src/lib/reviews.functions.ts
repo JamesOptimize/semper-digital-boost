@@ -74,7 +74,7 @@ export const getGoogleReviews = createServerFn({ method: "GET" }).handler(
         rating: number;
         text: string | null;
         relative_time: string | null;
-        review_url: string | null
+        review_url: string | null;
         published_at: string | null;
       }>;
 
