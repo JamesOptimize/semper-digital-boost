@@ -35,6 +35,8 @@ import { ResponsiveImage } from "@/components/marketing/ResponsiveImage";
 import { LazyMap } from "@/components/marketing/LazyMap";
 import { AboutTimeline } from "@/components/marketing/AboutTimeline";
 import { PracticeGallery } from "@/components/marketing/PracticeGallery";
+import { GoogleReviews, GoogleRatingBadge } from "@/components/marketing/GoogleReviews";
+import { getGoogleReviews, EMPTY_REVIEWS, type ReviewsPayload } from "@/lib/reviews.functions";
 import { PillarCard, FamilyIcon, SportsIcon, VeteranIcon } from "@/components/marketing/PillarCard";
 
 import clinicAvif480 from "@/assets/clinic/clinic-480.avif";
