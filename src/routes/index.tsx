@@ -292,7 +292,13 @@ function Hero() {
 }
 
 /* ---------------- TRUST BAR ---------------- */
-function TrustBar() {
+function TrustBar({
+  rating,
+  reviewCount,
+}: {
+  rating: number | null;
+  reviewCount: number | null;
+}) {
   return (
     <section className="border-y border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-6 sm:px-6 md:flex-row lg:px-8">
@@ -302,6 +308,7 @@ function TrustBar() {
             Doctor of Chiropractic · CCSP-certified sports physician
           </span>
         </div>
+        <GoogleRatingBadge rating={rating} reviewCount={reviewCount} />
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-widest text-foreground/55">
           <span>BCBS</span>
           <span>Aetna</span>
