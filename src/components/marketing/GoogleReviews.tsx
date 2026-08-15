@@ -34,7 +34,7 @@ function ReviewCard({ review }: { review: PublicReview }) {
   return (
     <figure className="flex h-full flex-col rounded-3xl border border-border bg-background p-6 shadow-[var(--shadow-elegant)]">
       <Stars rating={review.rating} label={`${review.rating} out of 5 stars`} />
-      <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80">
+      <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:10] overflow-hidden">
         “{review.text}”
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
