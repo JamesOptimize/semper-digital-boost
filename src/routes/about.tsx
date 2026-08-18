@@ -33,7 +33,7 @@ const teamJpg = `${teamJpg720} 720w, ${teamJpg1200} 1200w`;
 const credentials = [
   { label: "Service", value: "USMC", detail: "Veteran, honorably served" },
   { label: "Degree", value: "DC", detail: "Doctor of Chiropractic, Life University" },
-  { label: "Certification", value: "CCSP", detail: "Certified Chiropractic Sports Physician" },
+  { label: "Certification", value: "CCSP · Webster", detail: "Sports Physician · Webster Certified" },
   { label: "Clinic", value: "Roswell, GA", detail: "859 Mimosa Blvd" },
 ];
 
@@ -110,7 +110,7 @@ function About() {
             <p>
               With advanced certification as a{" "}
               <strong className="text-forest">Certified Chiropractic Sports Physician (CCSP)</strong>,
-              Dr. Scrimo treats elite athletes, weekend warriors, families, and active adults
+              and Webster Certified for prenatal care, Dr. Scrimo treats athletes, families, and active adults
               with the same standard of care: excellence, accountability, and the kind
               of personal attention that big-box clinics simply don't offer.
             </p>
@@ -168,7 +168,7 @@ function About() {
               The practice
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-4xl">
-              A family-run office on Mimosa Blvd.
+              A family-run office in Roswell.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-foreground/75">
               Semper Chiropractic is owned and run by the Scrimos. You'll see the same faces at the

@@ -77,7 +77,7 @@ const faqs = [
   },
   {
     q: "Do you take insurance?",
-    a: "We accept most major plans including BCBS, Aetna, Cigna, United Healthcare, and Humana. We'll verify your benefits before your visit.",
+    a: "We accept most major plans including BCBS, Aetna, Cigna, United Healthcare, and Medicare. We'll verify your benefits before your visit.",
   },
   {
     q: "Is chiropractic safe for kids and pregnancy?",
@@ -139,11 +139,16 @@ const personLd = {
       name: "Certified Chiropractic Sports Physician (CCSP)",
       credentialCategory: "certification",
     },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Webster Technique Certified (ICPA)",
+      credentialCategory: "certification",
+    },
   ],
   knowsAbout: [
     "Chiropractic care",
     "Sports injury rehabilitation",
-    "Prenatal chiropractic",
+    "Prenatal chiropractic (Webster Technique)",
     "Pediatric chiropractic",
     "Veteran wellness",
   ],
@@ -258,7 +263,7 @@ function Hero() {
           </div>
 
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.25em] text-foreground/60">
-            Est. Roswell, GA · 859 Mimosa Blvd
+            Est. Roswell, GA · {SITE.address}
           </p>
         </div>
 
@@ -305,16 +310,14 @@ function TrustBar({
         <div className="flex items-center gap-2">
           <Award className="h-4 w-4 text-bronze" aria-hidden />
           <span className="text-sm font-medium text-foreground/80">
-            Doctor of Chiropractic · CCSP-certified sports physician
+            Doctor of Chiropractic · CCSP · Webster Certified
           </span>
         </div>
         <GoogleRatingBadge rating={rating} reviewCount={reviewCount} />
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-widest text-foreground/55">
-          <span>BCBS</span>
-          <span>Aetna</span>
-          <span>Cigna</span>
-          <span>United Healthcare</span>
-          <span>Humana</span>
+          {SITE.insurance.map((plan) => (
+            <span key={plan}>{plan}</span>
+          ))}
         </div>
         <div className="flex items-center gap-2 text-sm text-foreground/70">
           <ShieldCheck className="h-4 w-4 text-forest" />
@@ -330,7 +333,7 @@ function Pillars() {
   const pillars = [
     {
       title: "Family Chiropractic",
-      copy: "Whole-family care from newborns to grandparents — gentle, pediatric, and prenatal.",
+      copy: "Whole-family care from newborns to grandparents — gentle, pediatric, and Webster certified for prenatal care.",
       href: "/services#family",
       icon: FamilyIcon,
     },
@@ -445,19 +448,23 @@ function DoctorStory() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-foreground/70">
             Trained at Life University with advanced certification in sports chiropractic (CCSP),
-            he treats families, weekend athletes, and active adults with the same standard he has
-            always held: excellence, always.
+            he treats families, athletes, and active adults with the same standard he has always
+            held: excellence.
           </p>
 
 
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
             <div>
               <dt className="text-xs uppercase tracking-widest text-foreground/55">Degree</dt>
-              <dd className="mt-2 font-display text-2xl font-bold text-forest">DC</dd>
+              <dd className="mt-2 font-display text-lg font-bold leading-snug text-forest">
+                Doctor of Chiropractic
+              </dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-widest text-foreground/55">Certified</dt>
-              <dd className="mt-2 font-display text-2xl font-bold text-forest">CCSP</dd>
+              <dd className="mt-2 font-display text-lg font-bold leading-snug text-forest">
+                CCSP · Webster
+              </dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-widest text-foreground/55">Service</dt>
@@ -640,9 +647,11 @@ function Location() {
               <div className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-5 w-5 text-bronze" />
                 <div className="text-sm">
-                  <p>Mon–Fri · 8:00a – 6:00p</p>
-                  <p>Sat · By appointment</p>
-                  <p>Sun · Closed</p>
+                  {SITE.hoursRows.map((row) => (
+                    <p key={row.days}>
+                      <span className="font-semibold text-forest">{row.days}</span> · {row.value}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>

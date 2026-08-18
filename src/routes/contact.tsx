@@ -97,9 +97,11 @@ function Contact() {
             </a>
           </InfoRow>
           <InfoRow icon={Clock} label="Hours">
-            Mon–Fri 8:00a – 6:00p
-            <br />
-            Sat by appointment · Sun closed
+            {SITE.hoursRows.map((row) => (
+              <span key={row.days} className="block">
+                <span className="font-semibold">{row.days}</span> · {row.value}
+              </span>
+            ))}
           </InfoRow>
 
           <LazyMap
