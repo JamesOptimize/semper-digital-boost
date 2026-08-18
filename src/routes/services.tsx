@@ -18,7 +18,7 @@ const pillars = [
     ],
     benefits: [
       "60-minute new patient exam",
-      "Webster-informed prenatal protocols",
+      "Webster Certified prenatal care",
       "Family scheduling block hours",
     ],
     icon: FamilyIcon,
@@ -28,7 +28,7 @@ const pillars = [
     eyebrow: "Sports Injury & Performance",
     title: "CCSP-certified rehab to return athletes to peak performance faster.",
     copy:
-      "The same post-doctoral credential held by chiropractors who treat Olympic and professional athletes. Built for high-school standouts, collegiate competitors, and weekend warriors alike.",
+      "The same post-doctoral credential held by chiropractors who treat Olympic and professional athletes. Built for high-school standouts, collegiate competitors, and lifelong recreational athletes alike.",
     treats: [
       "Sprains, strains & soft-tissue injuries",
       "Shoulder, hip, knee & ankle dysfunction",

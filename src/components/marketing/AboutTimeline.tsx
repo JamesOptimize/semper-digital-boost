@@ -26,7 +26,7 @@ const timeline = [
   {
     year: "Life University",
     title: "Doctor of Chiropractic",
-    copy: "Earned his DC from one of the most respected chiropractic programs in the country, with a focus on full-body biomechanics and neuro-spinal care.",
+    copy: "Earned his DC from one of the most respected chiropractic programs in the country, with a focus on full-body biomechanics.",
     Icon: GraduationCap,
   },
   {
@@ -38,7 +38,7 @@ const timeline = [
   {
     year: "Today",
     title: "Semper Chiropractic, Roswell",
-    copy: "Treating families, athletes, and active adults on Mimosa Blvd with careful precision and genuine human warmth.",
+    copy: "Treating families, athletes, and active adults in Roswell and surrounding areas with careful precision and genuine human warmth.",
     Icon: Stethoscope,
   },
 ];
@@ -74,7 +74,7 @@ export function AboutTimeline() {
                   Dr. Thomas Scrimo
                 </div>
                 <div className="mt-1 font-display text-sm font-semibold">
-                  DC · CCSP · Veteran Owned
+                  DC · CCSP · Webster Certified
                 </div>
               </div>
 

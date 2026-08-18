@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import spineMark from "@/assets/spine-mark.png";
 import { SocialLinks } from "@/components/marketing/SocialLinks";
+import { SITE } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -34,19 +35,26 @@ export function SiteFooter() {
               Visit
             </h3>
             <address className="mt-4 not-italic text-sm text-navy-foreground/80">
-              859 Mimosa Blvd
+              {SITE.addressParts.street}
               <br />
-              Roswell, GA 30075
+              {SITE.addressParts.cityStateZip}
               <br />
-              <a className="mt-2 inline-block hover:text-bronze" href="tel:6782261333">
-                (678) 226-1333
+              <a className="mt-2 inline-block hover:text-bronze" href={`tel:${SITE.phoneRaw}`}>
+                {SITE.phone}
+              </a>
+              <br />
+              <a className="mt-1 inline-block hover:text-bronze" href={`mailto:${SITE.email}`}>
+                {SITE.email}
               </a>
             </address>
-            <div className="mt-4 text-sm text-navy-foreground/70">
-              Mon–Fri 8a–6p
-              <br />
-              Sat by appointment
-            </div>
+            <dl className="mt-4 space-y-1 text-sm text-navy-foreground/70">
+              {SITE.hoursRows.map((row) => (
+                <div key={row.days} className="flex gap-2">
+                  <dt className="font-semibold text-navy-foreground/85">{row.days}</dt>
+                  <dd>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div>
