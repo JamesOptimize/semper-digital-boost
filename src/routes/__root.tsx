@@ -95,17 +95,11 @@ const localBusinessLd = {
   founder: {
     "@type": "Person",
     name: "Dr. Thomas Scrimo",
-    jobTitle: "Doctor of Chiropractic, USMC Veteran",
+    jobTitle: "Doctor of Chiropractic",
     alumniOf: "Life University",
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
-  ],
+  openingHoursSpecification: OPENING_HOURS_LD,
+  email: SITE.email,
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({

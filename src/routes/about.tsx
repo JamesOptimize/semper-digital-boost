@@ -156,7 +156,7 @@ function About() {
               jpgSrcSet={teamJpg}
               fallbackSrc={teamJpg1200}
               sizes="(min-width: 768px) 45vw, 100vw"
-              alt="Dr. Thomas Scrimo and Mrs. Scrimo outside Semper Chiropractic on Mimosa Blvd in Roswell, GA"
+              alt="Dr. Thomas Scrimo and Mrs. Scrimo outside Semper Chiropractic in Roswell, GA"
               width={1280}
               height={1600}
               className="block aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-elegant)]"

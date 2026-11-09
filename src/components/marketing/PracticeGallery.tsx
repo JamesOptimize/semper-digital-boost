@@ -72,7 +72,7 @@ const frames = [
       teamWebp480, teamWebp720, teamWebp960, teamWebp1200,
       teamJpg720, teamJpg1200,
     ),
-    caption: "Dr. Thomas Scrimo and Mrs. Scrimo outside the practice on Mimosa Blvd",
+    caption: "Dr. Thomas Scrimo and Mrs. Scrimo outside the practice in Roswell, GA",
     label: "The practice",
     width: 1280,
     height: 1600,

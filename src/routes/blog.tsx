@@ -84,7 +84,7 @@ function Blog() {
       </div>
 
       <p className="mt-12 text-sm text-foreground/55">
-        New articles publish monthly. Have a question you'd like answered? Email{" "}
+        Have a question you'd like answered? Email{" "}
         <a className="text-forest underline underline-offset-4" href="mailto:care@semperchiro.com">
           care@semperchiro.com
         </a>
