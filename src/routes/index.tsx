@@ -409,7 +409,7 @@ function Services() {
               key={s.label}
               className="flex flex-col gap-4 bg-forest p-8 transition-colors hover:bg-forest/70"
             >
-              <s.icon className="h-7 w-7 text-bronze" />
+              <s.icon className="h-7 w-7 text-bronze-deep" />
               <p className="font-display text-lg font-semibold">{s.label}</p>
             </div>
           ))}
