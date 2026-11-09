@@ -136,7 +136,7 @@ function About() {
                   {c.label}
                 </dt>
                 <dd className="mt-2 font-display text-2xl font-bold text-forest">{c.value}</dd>
-                <p className="mt-1 text-sm text-foreground/65">{c.detail}</p>
+                <dd className="mt-1 text-sm text-foreground/70">{c.detail}</dd>
               </div>
             ))}
           </dl>

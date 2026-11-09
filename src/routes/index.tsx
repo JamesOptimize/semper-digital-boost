@@ -388,7 +388,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="flex flex-col items-end justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze-deep">
               Services
             </p>
             <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] md:text-5xl">
@@ -409,7 +409,7 @@ function Services() {
               key={s.label}
               className="flex flex-col gap-4 bg-forest p-8 transition-colors hover:bg-forest/70"
             >
-              <s.icon className="h-7 w-7 text-bronze" />
+              <s.icon className="h-7 w-7 text-bronze-deep" />
               <p className="font-display text-lg font-semibold">{s.label}</p>
             </div>
           ))}
@@ -674,7 +674,7 @@ function Location() {
             <div>
               <h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">
                 Ready to feel like{" "}
-                <span className="italic text-bronze">yourself</span> again?
+                <span className="italic text-bronze-deep">yourself</span> again?
               </h2>
               <p className="mt-4 max-w-md text-forest-foreground/80">
                 Book your new patient exam — same-week appointments available.

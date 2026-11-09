@@ -44,6 +44,7 @@
   --color-forest: var(--brand-forest);
   --color-forest-foreground: var(--brand-forest-foreground);
   --color-bronze: var(--brand-bronze);
+  --color-bronze-deep: var(--brand-bronze-deep);
   --color-bronze-foreground: var(--brand-bronze-foreground);
   --color-cream: var(--brand-cream);
   --color-navy: var(--brand-navy);
@@ -77,6 +78,7 @@
   --brand-cream: oklch(0.165 0.006 70);
   --brand-navy: oklch(0.13 0.006 70);
   --brand-navy-foreground: oklch(0.95 0.018 85);
+  --brand-bronze-deep: oklch(0.48 0.09 70); /* gold for ivory bands, AA on --brand-forest */
   --brand-green: oklch(0.42 0.07 155);
 
   --background: oklch(0.185 0.006 70);

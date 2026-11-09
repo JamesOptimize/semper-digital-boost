@@ -232,7 +232,7 @@ function PillarSection({ pillar, reverse }: PillarSectionProps) {
 
 function Column({ title, items }: { title: string; items: readonly string[] }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-6">
+    <div className="glass-card rounded-2xl p-6">
       <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-foreground/55">
         {title}
       </h3>

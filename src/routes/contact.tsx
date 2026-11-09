@@ -112,7 +112,7 @@ function Contact() {
 
         <form
           onSubmit={onSubmit}
-          className="md:col-span-7 space-y-5 rounded-3xl bg-card p-8 ring-1 ring-border"
+          className="md:col-span-7 space-y-5 glass-card rounded-3xl p-8"
           noValidate
         >
           <Field name="name" label="Full name" error={errors.name} />
