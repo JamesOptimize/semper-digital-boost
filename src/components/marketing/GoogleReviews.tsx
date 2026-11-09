@@ -58,7 +58,7 @@ function ReviewCard({ review }: { review: PublicReview }) {
           <span className="block truncate text-sm font-semibold text-forest">
             {review.authorName}
           </span>
-          <span className="block text-xs text-foreground/55">
+          <span className="block text-xs text-foreground/70">
             Google review{review.relativeTime ? ` · ${review.relativeTime}` : ""}
           </span>
         </span>
@@ -114,7 +114,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
                   </span>
                   <Stars rating={rating} label={`${rating} out of 5 stars on Google`} />
                 </div>
-                <p className="mt-1 text-xs uppercase tracking-widest text-foreground/55">
+                <p className="mt-1 text-xs uppercase tracking-widest text-foreground/70">
                   {reviewCount} reviews on Google
                 </p>
               </div>
