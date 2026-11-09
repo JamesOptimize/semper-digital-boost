@@ -230,14 +230,14 @@ function Home() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-cream">
+    <section className="relative overflow-hidden bg-cream glow-hero">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-12 md:gap-10 md:pb-28 md:pt-24 lg:px-8">
         <div className="md:col-span-7 md:pr-6">
-          <span className="inline-flex items-center rounded-full border border-bronze px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-bronze">
+          <span className="glass-card inline-flex min-h-8 items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-bronze">
             Veteran Owned &amp; Operated
           </span>
-          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.1] tracking-[-0.02em] text-forest sm:text-6xl md:text-7xl">
-            Your Health is Your Wealth.
+          <h1 className="mt-6 font-display text-[clamp(2.9rem,7vw,5.75rem)] font-black leading-[0.98] tracking-[-0.035em] text-forest">
+            Your Health is Your <span className="text-bronze">Wealth.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
             Precision chiropractic care for Roswell families, athletes, and active adults —
@@ -269,7 +269,8 @@ function Hero() {
 
         <div className="md:col-span-5">
           <div className="relative">
-            <div className="absolute -inset-3 -z-10 rotate-2 rounded-[2rem] bg-forest/8" />
+            <div className="absolute -inset-10 -z-10 rounded-full bg-bronze/10 blur-3xl" aria-hidden />
+            <div className="frame-photo">
             <picture>
               <source type="image/avif" srcSet={heroAvifSrcSet} sizes={heroSizes} />
               <source type="image/webp" srcSet={heroWebpSrcSet} sizes={heroSizes} />
@@ -282,10 +283,11 @@ function Hero() {
                 height={1500}
                 fetchPriority="high"
                 decoding="async"
-                className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-[var(--shadow-elegant)]"
+                className="aspect-[4/5] w-full object-cover object-top"
               />
             </picture>
-            <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-navy px-5 py-4 text-navy-foreground shadow-xl sm:block">
+            </div>
+            <div className="glass-card absolute -bottom-5 -left-5 z-10 hidden rounded-2xl px-5 py-4 text-foreground sm:block">
               <div className="text-xs uppercase tracking-widest text-bronze">Dr. Thomas Scrimo</div>
               <div className="mt-1 font-display text-sm font-semibold">DC · CCSP · USMC</div>
             </div>
@@ -305,7 +307,7 @@ function TrustBar({
   reviewCount: number | null;
 }) {
   return (
-    <section className="border-y border-border bg-background">
+    <section className="border-y border-border bg-navy">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 py-6 sm:px-6 md:flex-row lg:px-8">
         <div className="flex items-center gap-2">
           <Award className="h-4 w-4 text-bronze" aria-hidden />
@@ -358,7 +360,7 @@ function Pillars() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
           Why Choose Semper
         </p>
-        <h2 className="mt-3 font-display text-4xl font-bold tracking-[-0.02em] text-forest md:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-black tracking-[-0.03em] text-forest md:text-6xl">
           Three patients. One standard of care.
         </h2>
       </div>
@@ -389,19 +391,19 @@ function Services() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Services
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] md:text-5xl">
               Care that meets you where you are.
             </h2>
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-bronze hover:text-bronze/80"
+            className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-forest-foreground underline-offset-4 hover:underline"
           >
             See full service list <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-3">
+        <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-forest-foreground/10 sm:grid-cols-3">
           {items.map((s) => (
             <div
               key={s.label}
@@ -423,21 +425,24 @@ function DoctorStory() {
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
       <div className="grid items-center gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
+          <div className="relative">
+          <div className="absolute -inset-10 -z-10 rounded-full bg-bronze/10 blur-3xl" aria-hidden />
           <ResponsiveImage
             {...clinicSet}
             sizes={clinicSizes}
             alt="Dr. Scrimo delivering chiropractic adjustment in the Roswell clinic"
             width={1200}
             height={1500}
-            className="block aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-elegant)]"
+            className="frame-photo block aspect-[4/5] w-full"
             imgClassName="h-full w-full object-cover"
           />
+          </div>
         </div>
         <div className="md:col-span-7 md:pl-6">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             Meet Dr. Scrimo
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] text-forest md:text-5xl">
             Real accountability.{" "}
             <span className="italic">Clinical mastery.</span>
           </h2>
@@ -453,21 +458,21 @@ function DoctorStory() {
           </p>
 
 
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
-            <div>
-              <dt className="text-xs uppercase tracking-widest text-foreground/55">Degree</dt>
+          <dl className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="glass-card rounded-2xl p-5">
+              <dt className="text-xs uppercase tracking-widest text-foreground/60">Degree</dt>
               <dd className="mt-2 font-display text-lg font-bold leading-snug text-forest">
                 Doctor of Chiropractic
               </dd>
             </div>
-            <div>
-              <dt className="text-xs uppercase tracking-widest text-foreground/55">Certified</dt>
+            <div className="glass-card rounded-2xl p-5">
+              <dt className="text-xs uppercase tracking-widest text-foreground/60">Certified</dt>
               <dd className="mt-2 font-display text-lg font-bold leading-snug text-forest">
                 CCSP · Webster
               </dd>
             </div>
-            <div>
-              <dt className="text-xs uppercase tracking-widest text-foreground/55">Service</dt>
+            <div className="glass-card rounded-2xl p-5">
+              <dt className="text-xs uppercase tracking-widest text-foreground/60">Service</dt>
               <dd className="mt-2 font-display text-2xl font-bold text-forest">USMC</dd>
             </div>
           </dl>
@@ -518,7 +523,7 @@ function StandardOfCare() {
           </p>
           <h2
             id="standard-heading"
-            className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl"
+            className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] text-forest md:text-5xl"
           >
             What every visit looks like here.
           </h2>
@@ -576,7 +581,7 @@ function Journey() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
             New patient journey
           </p>
-          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] text-forest md:text-5xl">
             Know exactly what to expect.
           </h2>
           <div className="mt-10 space-y-8">
@@ -620,7 +625,7 @@ function Location() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
               Visit the clinic
             </p>
-            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-forest md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] text-forest md:text-5xl">
               Right in the heart of Roswell.
             </h2>
             <div className="mt-8 space-y-5 text-foreground/80">
