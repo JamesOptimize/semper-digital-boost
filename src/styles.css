@@ -217,13 +217,46 @@
   position: relative;
   border-radius: 1.75rem;
   overflow: hidden;
-  box-shadow: 0 0 0 1px oklch(0.8 0.085 82 / 35%), var(--shadow-elegant);
+  /* Thinner, softer gold stroke; shadow-only, zero layout cost */
+  box-shadow: 0 0 0 1px oklch(0.8 0.085 82 / 22%), var(--shadow-elegant);
   &::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
+    border-radius: inherit;
     background: linear-gradient(180deg, transparent 60%, oklch(0.13 0.006 70 / 55%));
+    /* Subtle inner vignette so the photo sits deliberately in the dark field */
+    box-shadow: inset 0 0 48px oklch(0.13 0.006 70 / 35%), inset 0 0 0 1px oklch(0.95 0.018 85 / 5%);
+  }
+}
+
+/* Soft warm radial glow — pure CSS, disabled on small screens for smooth scroll */
+@utility glow-warm {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -12% -8%;
+    pointer-events: none;
+    background: radial-gradient(55% 60% at 30% 40%, oklch(0.8 0.085 82 / 9%), transparent 70%);
+  }
+}
+@utility card-glow {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(80% 60% at 50% 0%, oklch(0.8 0.085 82 / 7%), transparent 70%);
+  }
+}
+@media (max-width: 768px) {
+  .glow-warm::before,
+  .card-glow::before {
+    display: none;
   }
 }
 

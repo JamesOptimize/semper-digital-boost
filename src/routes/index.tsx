@@ -220,11 +220,11 @@ function Hero({ rating, reviewCount }: { rating: number | null; reviewCount: num
   return (
     <section className="relative overflow-hidden bg-cream glow-hero">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-12 md:gap-10 md:pb-28 md:pt-24 lg:px-8">
-        <div className="md:col-span-7 md:pr-6">
+        <div className="glow-warm md:col-span-7 md:pr-6">
           <span className="glass-card inline-flex min-h-8 items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-bronze">
             Veteran Owned &amp; Operated
           </span>
-          <h1 className="mt-6 font-display text-[clamp(2.9rem,7vw,5.75rem)] font-black leading-[0.98] tracking-[-0.035em] text-forest">
+          <h1 className="mt-6 font-display text-[clamp(2.9rem,7vw,5.75rem)] font-black leading-[0.94] tracking-[-0.045em] text-forest">
             Your Health is Your <span className="text-bronze">Wealth.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75">
