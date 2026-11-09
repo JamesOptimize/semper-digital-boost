@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SITE, OPENING_HOURS_LD } from "@/lib/site";
 import {
   Outlet,
   Link,
