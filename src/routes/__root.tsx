@@ -179,9 +179,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-0">
         <SiteHeader />
-        <main className="flex-1 pb-20 md:pb-0">
+        <main className="flex-1">
           <Outlet />
         </main>
         <SiteFooter />

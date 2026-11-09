@@ -58,7 +58,7 @@ function ReviewCard({ review }: { review: PublicReview }) {
           <span className="block truncate text-sm font-semibold text-forest">
             {review.authorName}
           </span>
-          <span className="block text-xs text-foreground/55">
+          <span className="block text-xs text-foreground/70">
             Google review{review.relativeTime ? ` · ${review.relativeTime}` : ""}
           </span>
         </span>
@@ -67,18 +67,21 @@ function ReviewCard({ review }: { review: PublicReview }) {
   );
 }
 
-export function GoogleRatingBadge({ rating, reviewCount }: Pick<ReviewsPayload, "rating" | "reviewCount">) {
+export function GoogleRatingBadge({
+  rating,
+  reviewCount,
+  href,
+}: Pick<ReviewsPayload, "rating" | "reviewCount"> & { href?: string }) {
   if (rating == null || !reviewCount) return null;
   return (
     <a
-      href={SITE.googleReviewsUrl}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm text-foreground/75 transition-colors hover:border-bronze hover:text-forest"
+      href={href ?? SITE.googleReviewsUrl}
+      {...(href ? {} : { target: "_blank", rel: "noreferrer" })}
+      className="flex min-h-11 w-fit items-center gap-2 rounded-full border border-border px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze text-sm text-foreground/75 transition-colors hover:border-bronze hover:text-forest"
     >
       <Stars rating={rating} label={`${rating} out of 5 stars on Google`} />
       <span className="font-semibold text-forest">{rating.toFixed(1)}</span>
-      <span className="text-xs text-foreground/60">{reviewCount} Google reviews</span>
+      <span className={`text-xs text-foreground/70 ${href ? "underline decoration-bronze/50 underline-offset-4" : ""}`}>{reviewCount} Google reviews</span>
     </a>
   );
 }
@@ -87,7 +90,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
   if (reviews.length === 0) return null;
 
   return (
-    <section id="reviews" className="bg-cream py-20 md:py-28">
+    <section id="reviews" className="scroll-mt-16 bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -111,7 +114,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
                   </span>
                   <Stars rating={rating} label={`${rating} out of 5 stars on Google`} />
                 </div>
-                <p className="mt-1 text-xs uppercase tracking-widest text-foreground/55">
+                <p className="mt-1 text-xs uppercase tracking-widest text-foreground/70">
                   {reviewCount} reviews on Google
                 </p>
               </div>
