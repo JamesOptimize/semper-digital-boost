@@ -31,9 +31,9 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-widest text-bronze">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-widest text-bronze">
               Visit
-            </h3>
+            </h2>
             <address className="mt-4 not-italic text-sm text-navy-foreground/80">
               {SITE.addressParts.street}
               <br />
@@ -58,9 +58,9 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-widest text-bronze">
+            <h2 className="font-display text-sm font-semibold uppercase tracking-widest text-bronze">
               Explore
-            </h3>
+            </h2>
             <ul className="mt-4 space-y-2 text-sm">
               {[
                 ["/about", "About Dr. Scrimo"],
