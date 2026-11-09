@@ -10,7 +10,7 @@ export interface PillarCardProps {
 
 export function PillarCard({ title, copy, href, icon }: PillarCardProps) {
   return (
-    <article className="group flex h-full flex-col glass-card rounded-3xl p-8 transition-transform duration-300 ease-out will-change-transform hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)]">
+    <article className="group flex h-full flex-col glass-card card-glow rounded-3xl p-8 transition-[transform,box-shadow,border-color] duration-200 ease-out will-change-transform hover:-translate-y-2 hover:border-bronze/40 hover:shadow-[var(--shadow-elegant)]">
       <div
         className="flex h-12 w-12 items-center justify-center rounded-full border border-bronze/40 text-bronze"
         aria-hidden="true"

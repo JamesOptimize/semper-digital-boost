@@ -32,7 +32,7 @@ function initials(name: string) {
 
 function ReviewCard({ review }: { review: PublicReview }) {
   return (
-    <figure className="flex h-full flex-col glass-card rounded-3xl p-6">
+    <figure className="flex h-full flex-col glass-card rounded-3xl p-6 transition-[transform,box-shadow,border-color] duration-200 ease-out will-change-transform hover:-translate-y-1.5 hover:border-bronze/35 hover:shadow-[var(--shadow-elegant)]">
       <Stars rating={review.rating} label={`${review.rating} out of 5 stars`} />
       <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:10] overflow-hidden">
         “{review.text}”
