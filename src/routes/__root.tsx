@@ -80,7 +80,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 const localBusinessLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "MedicalBusiness", "Physician"],
+  "@id": "https://www.semper-chiropractic.com/#clinic",
   name: "Semper Chiropractic",
+  url: "https://www.semper-chiropractic.com/",
+  description:
+    "Veteran-owned chiropractic care in Roswell, GA. Mon–Thurs 8:00am–1:00pm & 3:00pm–6:00pm, Fri 8:00am–1:00pm, Saturday by appointment only, Sunday closed.",
+  sameAs: [SITE.social.instagram, SITE.social.facebook, SITE.social.linkedin],
+  hasMap: SITE.mapsLink,
   image: "https://www.semper-chiropractic.com/og-cover.jpg",
   telephone: "+1-678-226-1333",
   priceRange: "$$",
@@ -96,9 +102,15 @@ const localBusinessLd = {
   areaServed: ["Roswell", "Alpharetta", "Milton", "Atlanta"],
   founder: {
     "@type": "Person",
+    "@id": "https://www.semper-chiropractic.com/#dr-scrimo",
     name: "Dr. Thomas Scrimo",
     jobTitle: "Doctor of Chiropractic",
     alumniOf: "Life University",
+    hasCredential: [
+      { "@type": "EducationalOccupationalCredential", name: "Doctor of Chiropractic (DC)", credentialCategory: "degree" },
+      { "@type": "EducationalOccupationalCredential", name: "Certified Chiropractic Sports Physician (CCSP)", credentialCategory: "certification" },
+      { "@type": "EducationalOccupationalCredential", name: "Webster Technique Certified (ICPA)", credentialCategory: "certification" },
+    ],
   },
   openingHoursSpecification: OPENING_HOURS_LD,
   email: SITE.email,
@@ -135,6 +147,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preconnect", href: "https://api.fontshare.com", crossOrigin: "anonymous" },
       {
@@ -143,7 +156,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
       },
     ],
 

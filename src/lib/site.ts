@@ -64,18 +64,4 @@ export const OPENING_HOURS_LD = [
     opens: "08:00",
     closes: "13:00",
   },
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Saturday"],
-    opens: "00:00",
-    closes: "00:00",
-    description: "By appointment only",
-  },
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Sunday"],
-    opens: "00:00",
-    closes: "00:00",
-    description: "Closed",
-  },
 ];

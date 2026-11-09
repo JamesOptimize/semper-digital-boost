@@ -107,19 +107,7 @@ const personLd = {
   jobTitle: "Doctor of Chiropractic",
   honorificSuffix: "DC, CCSP",
   image: "https://www.semper-chiropractic.com/og-cover.jpg",
-  worksFor: {
-    "@type": "MedicalBusiness",
-    name: "Semper Chiropractic",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "859 Mimosa Blvd",
-      addressLocality: "Roswell",
-      addressRegion: "GA",
-      postalCode: "30075",
-      addressCountry: "US",
-    },
-    telephone: "+1-678-226-1333",
-  },
+  worksFor: { "@id": "https://www.semper-chiropractic.com/#clinic" },
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Life University",
@@ -286,7 +274,6 @@ function Hero({ rating, reviewCount }: { rating: number | null; reviewCount: num
                 width={1200}
                 height={1500}
                 fetchPriority="high"
-                decoding="async"
                 className="aspect-[4/5] w-full object-cover object-top"
               />
             </picture>
