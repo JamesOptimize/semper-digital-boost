@@ -32,7 +32,7 @@ function initials(name: string) {
 
 function ReviewCard({ review }: { review: PublicReview }) {
   return (
-    <figure className="flex h-full flex-col rounded-3xl border border-border bg-background p-6 shadow-[var(--shadow-elegant)]">
+    <figure className="flex h-full flex-col glass-card rounded-3xl p-6">
       <Stars rating={review.rating} label={`${review.rating} out of 5 stars`} />
       <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/80 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:10] overflow-hidden">
         “{review.text}”
@@ -104,7 +104,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
               </p>
             </div>
             {rating != null && reviewCount ? (
-              <div className="shrink-0 rounded-2xl border border-border bg-background px-5 py-4">
+              <div className="shrink-0 glass-card rounded-2xl px-5 py-4">
                 <div className="flex items-center gap-2">
                   <span className="font-display text-3xl font-bold text-forest">
                     {rating.toFixed(1)}
