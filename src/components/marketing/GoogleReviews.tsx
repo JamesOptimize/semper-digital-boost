@@ -90,7 +90,7 @@ export function GoogleReviews({ rating, reviewCount, reviews }: ReviewsPayload) 
   if (reviews.length === 0) return null;
 
   return (
-    <section id="reviews" className="bg-cream py-20 md:py-28">
+    <section id="reviews" className="scroll-mt-16 bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
