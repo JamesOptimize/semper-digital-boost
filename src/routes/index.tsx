@@ -212,7 +212,7 @@ function Home() {
   const reviews = Route.useLoaderData();
   return (
     <>
-      <Hero />
+      <Hero rating={reviews.rating} reviewCount={reviews.reviewCount} />
       <TrustBar rating={reviews.rating} reviewCount={reviews.reviewCount} />
       <Pillars />
       <Services />
@@ -228,7 +228,7 @@ function Home() {
 }
 
 /* ---------------- HERO ---------------- */
-function Hero() {
+function Hero({ rating, reviewCount }: { rating: number | null; reviewCount: number | null }) {
   return (
     <section className="relative overflow-hidden bg-cream glow-hero">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 md:grid-cols-12 md:gap-10 md:pb-28 md:pt-24 lg:px-8">
@@ -260,6 +260,10 @@ function Hero() {
             >
               Call {SITE.phone}
             </a>
+          </div>
+
+          <div className="mt-5">
+            <GoogleRatingBadge rating={rating} reviewCount={reviewCount} href="#reviews" />
           </div>
 
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.25em] text-foreground/60">
@@ -584,17 +588,35 @@ function Journey() {
           <h2 className="mt-3 font-display text-4xl font-bold leading-[1.04] tracking-[-0.03em] text-forest md:text-5xl">
             Know exactly what to expect.
           </h2>
-          <div className="mt-10 space-y-8">
-            {steps.map((s) => (
-              <div key={s.n} className="flex gap-5">
-                <div className="font-display text-3xl font-bold text-bronze">{s.n}</div>
-                <div>
+          <ol className="relative mt-10 space-y-8">
+            <span
+              aria-hidden
+              className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-bronze via-bronze/50 to-bronze/10"
+            />
+            {steps.map((s, i) => (
+              <li key={s.n} className="relative flex gap-5">
+                <div
+                  className={`glass-card relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-base font-bold ${i === steps.length - 1 ? "text-bronze ring-1 ring-bronze/60" : "text-bronze"}`}
+                >
+                  {s.n}
+                </div>
+                <div className="pt-2">
                   <h3 className="font-display text-xl font-semibold text-forest">{s.title}</h3>
                   <p className="mt-1 text-sm text-foreground/70">{s.copy}</p>
+                  {i === steps.length - 1 && (
+                    <a
+                      href={SITE.bookUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-forest px-6 text-sm font-semibold text-forest-foreground transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    >
+                      Book New Patient Exam
+                    </a>
+                  )}
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
 
         <div className="lg:col-span-7">

@@ -67,18 +67,21 @@ function ReviewCard({ review }: { review: PublicReview }) {
   );
 }
 
-export function GoogleRatingBadge({ rating, reviewCount }: Pick<ReviewsPayload, "rating" | "reviewCount">) {
+export function GoogleRatingBadge({
+  rating,
+  reviewCount,
+  href,
+}: Pick<ReviewsPayload, "rating" | "reviewCount"> & { href?: string }) {
   if (rating == null || !reviewCount) return null;
   return (
     <a
-      href={SITE.googleReviewsUrl}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm text-foreground/75 transition-colors hover:border-bronze hover:text-forest"
+      href={href ?? SITE.googleReviewsUrl}
+      {...(href ? {} : { target: "_blank", rel: "noreferrer" })}
+      className="flex min-h-11 w-fit items-center gap-2 rounded-full border border-border px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze text-sm text-foreground/75 transition-colors hover:border-bronze hover:text-forest"
     >
       <Stars rating={rating} label={`${rating} out of 5 stars on Google`} />
       <span className="font-semibold text-forest">{rating.toFixed(1)}</span>
-      <span className="text-xs text-foreground/60">{reviewCount} Google reviews</span>
+      <span className={`text-xs text-foreground/70 ${href ? "underline decoration-bronze/50 underline-offset-4" : ""}`}>{reviewCount} Google reviews</span>
     </a>
   );
 }
