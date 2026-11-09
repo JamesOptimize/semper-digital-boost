@@ -397,7 +397,7 @@ function Services() {
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-bronze hover:text-bronze/80"
+            className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-forest-foreground underline-offset-4 hover:underline"
           >
             See full service list <ChevronRight className="h-4 w-4" />
           </Link>
