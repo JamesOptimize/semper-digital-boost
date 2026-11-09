@@ -7,9 +7,27 @@
 /* Fonts: Satoshi (headings) via Fontshare + Inter (body) via Google — loaded via <link> in __root.tsx */
 
 
+/* Metric-matched local fallbacks: minimise reflow when web fonts swap in */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22.4%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Arial");
+  size-adjust: 101%;
+  ascent-override: 99%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Satoshi", "Satoshi Fallback", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
