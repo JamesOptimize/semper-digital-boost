@@ -33,7 +33,7 @@ export function ThemeToggle() {
       }}
       aria-label={`Switch to ${next} mode`}
       title={`Switch to ${next} mode`}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-forest transition-colors hover:bg-forest hover:text-forest-foreground md:h-10 md:w-10"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-full text-forest transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze md:h-10 md:w-10"
     >
       {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>
