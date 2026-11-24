@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import spineMark from "@/assets/spine-mark.png";
+import { ThemeToggle } from "@/components/marketing/ThemeToggle";
 import { SocialLinks } from "@/components/marketing/SocialLinks";
 
 const nav = [
@@ -46,6 +47,7 @@ export function SiteHeader() {
           <div className="hidden lg:block">
             <SocialLinks variant="header" />
           </div>
+          <ThemeToggle />
           <a
             href="tel:6782261333"
             className="hidden h-10 w-10 items-center justify-center rounded-full border border-border text-forest transition-colors hover:bg-forest hover:text-forest-foreground md:inline-flex"

@@ -2,7 +2,8 @@
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(:root:not(.light) *));
+@custom-variant light (&:is(.light *));
 
 /* Fonts: Satoshi (headings) via Fontshare + Inter (body) via Google — loaded via <link> in __root.tsx */
 
@@ -155,25 +156,39 @@
   --space-6: 3rem;
 }
 
-.dark {
-  --background: oklch(0.16 0.02 155);
-  --foreground: oklch(0.97 0.012 85);
-  --card: oklch(0.2 0.025 155);
-  --card-foreground: oklch(0.97 0.012 85);
-  --popover: oklch(0.2 0.025 155);
-  --popover-foreground: oklch(0.97 0.012 85);
-  --primary: oklch(0.65 0.12 155);
-  --primary-foreground: oklch(0.12 0.02 155);
-  --secondary: oklch(0.25 0.03 155);
-  --secondary-foreground: oklch(0.97 0.012 85);
-  --muted: oklch(0.25 0.03 155);
-  --muted-foreground: oklch(0.72 0.02 85);
-  --accent: var(--brand-bronze);
-  --accent-foreground: oklch(0.12 0.02 155);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0.12 155);
+/* Light theme: original company colors (Forest #0A3D2A, Bronze #D4A017, Cream #F8F5F0, Navy #0C2340) */
+.light {
+  --brand-forest: #0A3D2A;
+  --brand-forest-foreground: #F8F5F0;
+  --brand-bronze: #8A6410; /* deepened bronze: AA as text on cream */
+  --brand-bronze-foreground: #F8F5F0;
+  --brand-bronze-deep: #D4A017; /* bright bronze on the forest band */
+  --brand-cream: #F8F5F0;
+  --brand-navy: #0C2340;
+  --brand-navy-foreground: #F8F5F0;
+  --background: #F8F5F0;
+  --foreground: #0C2340;
+  --card: #FFFFFF;
+  --card-foreground: #0C2340;
+  --popover: #FFFFFF;
+  --popover-foreground: #0C2340;
+  --secondary: oklch(0.93 0.012 85);
+  --secondary-foreground: #0C2340;
+  --muted: oklch(0.93 0.012 85);
+  --muted-foreground: oklch(0.42 0.03 255);
+  --border: oklch(0.26 0.06 255 / 14%);
+  --input: oklch(0.26 0.06 255 / 22%);
+  --shadow-elegant: 0 24px 48px -28px oklch(0.26 0.06 255 / 28%), 0 0 0 1px oklch(0.26 0.06 255 / 6%);
+  --glass-bg: linear-gradient(180deg, oklch(1 0 0 / 85%), oklch(1 0 0 / 65%));
+  --glass-border: oklch(0.32 0.06 160 / 14%);
+  --glass-highlight: inset 0 1px 0 oklch(1 0 0 / 80%);
+  --glow-hero:
+    radial-gradient(60% 55% at 72% 30%, oklch(0.75 0.14 80 / 14%), transparent 70%),
+    radial-gradient(45% 50% at 10% 85%, oklch(0.32 0.06 160 / 8%), transparent 70%);
+  color-scheme: light;
 }
+:root { color-scheme: dark; }
+.light .frame-photo::after { background: linear-gradient(180deg, transparent 70%, oklch(0.2 0.04 255 / 25%)); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 20%); }
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -274,3 +289,26 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Light theme: dark bands (navy / forest) keep light ink + bright bronze */
+.light .bg-navy {
+  --brand-forest: #F8F5F0;
+  --brand-forest-foreground: #0C2340;
+  --brand-bronze: #D4A017;
+  --brand-bronze-foreground: #0C2340;
+  --foreground: #F8F5F0;
+  --muted-foreground: oklch(0.85 0.015 85);
+  --border: oklch(1 0 0 / 16%);
+  --card: #13305A;
+}
+.light .bg-forest {
+  --brand-bronze: #D4A017;
+  --brand-bronze-foreground: #0C2340;
+  --foreground: #F8F5F0;
+}
+/* Faded navy ink needs more weight on cream to stay AA */
+.light :is(.text-foreground\/55, .text-foreground\/60, .text-foreground\/65) {
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+}
+.light .text-muted-foreground\/80 { color: var(--muted-foreground); }
+.light .bg-forest .text-bronze-foreground { color: #0C2340; }
