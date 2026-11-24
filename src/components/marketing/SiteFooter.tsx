@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import spineMark from "@/assets/spine-mark.png";
+import { SpineLogo } from "@/components/brand/SpineLogo";
 import { SocialLinks } from "@/components/marketing/SocialLinks";
 import { SITE } from "@/lib/site";
 
@@ -10,9 +10,11 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
-              <img src={spineMark} alt="" width={32} height={32} className="h-8 w-8" />
-              <span className="font-display text-xl font-bold tracking-tight">
-                Semper Chiropractic
+              <SpineLogo className="h-14 w-auto shrink-0 text-bronze" />
+              <span className="flex flex-col leading-none">
+                <span className="font-logo text-3xl font-semibold uppercase tracking-[0.14em]">Semper</span>
+                <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.32em] text-navy-foreground/75">Chiropractic</span>
+                <span className="mt-1.5 text-[9px] uppercase tracking-[0.3em] text-bronze">Health is Wealth</span>
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm text-navy-foreground/70">

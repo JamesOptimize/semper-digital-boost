@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import spineMark from "@/assets/spine-mark.png";
+import { SpineLogo } from "@/components/brand/SpineLogo";
 import { ThemeToggle } from "@/components/marketing/ThemeToggle";
 
 const nav = [
@@ -35,14 +35,10 @@ export function SiteHeader() {
     >
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 md:grid-cols-[1fr_auto_1fr] lg:px-8">
         <Link to="/" className="flex min-w-0 items-center gap-2.5 justify-self-start" aria-label="Semper Chiropractic home">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-navy ring-1 ring-bronze/30">
-            <img src={spineMark} alt="" width={24} height={24} className="h-6 w-6" />
-          </span>
-          <span className="truncate font-display text-lg font-bold tracking-tight text-forest">
-            Semper<span className="text-bronze">.</span>
-            <span className="ml-1.5 hidden text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/65 xl:inline">
-              Chiropractic
-            </span>
+          <SpineLogo className="h-10 w-auto shrink-0 text-forest dark:text-bronze" />
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="font-logo text-[1.45rem] font-semibold uppercase tracking-[0.14em] text-forest">Semper</span>
+            <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.32em] text-foreground/70">Chiropractic</span>
           </span>
         </Link>
 

@@ -27,6 +27,7 @@
 }
 
 @theme inline {
+  --font-logo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Satoshi", "Satoshi Fallback", ui-sans-serif, system-ui, sans-serif;
 
